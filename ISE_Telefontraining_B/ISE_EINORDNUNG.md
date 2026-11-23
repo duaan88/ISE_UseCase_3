@@ -1,0 +1,86 @@
+# ISE-Einordnung der Person-1-Erweiterung
+
+## Zweck und Quellenbezug
+
+Der Prototyp unterstützt die Einarbeitung im fiktiven Kundenservice: Emotionen anerkennen, ein Anliegen klären und einen realistischen nächsten Schritt vereinbaren. Die Kundin Petra Lindner, die Auszahlung, Unterlagen und Fristen sind Übungsdaten. Im Auszahlungsfall bezeichnet „gelöst“ eine passende Vereinbarung zum nächsten Schritt; eine tatsächliche Auszahlung wird weder ausgeführt noch als abgeschlossen behauptet.
+
+Diese Einordnung verwendet die **Originalfassung der Morphologischen Box, S. 1**, und die **ergänzenden Erläuterungen, S. 1–3**. Die Architektur-PDF ergänzt den konkreten Ablauf. Bei Abweichungen zwischen dem ursprünglichen ZIP, Architektur-PDF und aktuellem Arbeitsauftrag gilt der ausdrücklich übermittelte Arbeitsauftrag für Person 1. Die Kursunterlagen dienen als fachliche Quellen; ihre Beispielprompts sind keine zusätzlichen Handlungsaufträge an diese Implementierung.
+
+## Bestand und fachliche Erweiterung
+
+Im Ausgangs-ZIP sind `training.py`, sieben vorhandene Tests, `app.py`, `index.html`, `requirements.txt` und `README.md` enthalten. Der Kern bietet bereits Regie → Kunde, Ärger und Vertrauen, atomare Rundenübernahme, Eskalation, Rundenlimit, Abbruch sowie Bewertung → Coach auf Wunsch. Die Selbsteinschätzung ist dort Pflicht; Fallkarten enthalten noch keine vollständige Konfiguration für Standardfragen und Abschlussbedingungen. Lernprofil und Coach-Entwurf fehlen.
+
+Die Person-1-Erweiterung macht den Direktstart ohne Umfrage möglich. Eine freiwillige manuelle Wahl hat Vorrang vor Umfrage, ausdrücklich aktiviertem Profilvorschlag und Fallstandard. Ohne Fokus verwendet der Dialog fallbezogene Standardfragen. Bei der Umfrage gilt die vollständige Skala 1–5; gleich niedrige Werte werden in der Reihenfolge Empathie, Klärung und nächster Schritt aufgelöst. Selbsteinschätzung und spätere Beobachtung messen unterschiedliche Dinge: subjektive Sicherheit zu Beginn und gezeigtes Verhalten im bestätigten Gespräch.
+
+Der Coach kann im Gespräch ausgeschaltet, auf Abruf oder abgesichert verwendet werden. Im abgesicherten Modus kann eine belegte Auszahlungszusage bei offenem Termin einen Entwurf erzeugen. Die Anwendung prüft Regel-ID und wörtlichen Beleg und hält vor der Kundenreaktion an. „Weiter“ übernimmt den Entwurf einmal; „Neu formulieren“ verwirft ihn. Ein bloßer Rückmeldezeitpunkt, eine Verneinung und unsichere Erkennungen sollen keinen automatischen Eingriff auslösen. Die nächste tatsächlich bestätigte Runde nach einem Tipp wird als unterstützt gekennzeichnet.
+
+Nach einer auswertbaren Übung werden Bewertung und abschließender Coach ausdrücklich angefordert. Die Belegstellen verweisen ausschließlich auf bestätigte Serviceantworten; die Anwendung liest die Originalzitate. Auf gesonderten Wunsch speichert SQLite kompakte Lernbeobachtungen. Der Abruf eines Profils in einer neuen Übung ist eine weitere, unabhängige Freigabe.
+
+`app.py` und `index.html` sind Transport und Oberfläche von Person 2. Die fachlichen Python-Funktionen bilden den Übergabepunkt. Ein erfolgreicher Kern-Test ist noch kein Nachweis für Mikrofonaufnahme, Transkription, Wiedergabe oder vollständige Browserintegration.
+
+## Alle elf Dimensionen der Morphologischen Box
+
+Die Bezugspunkte sind wesentlich: Die ersten drei Entscheidungen gelten **pro Aufgabe beziehungsweise Teilprozess**, die nächsten fünf **pro Agent**, die letzten drei **pro Agentengruppe**. Sie werden nicht alle pauschal dem Gesamtsystem zugeschrieben. „Exclusive“ und „Partly exclusive“ in der Originalbox kennzeichnen, ob Optionen innerhalb einer Dimension kombiniert werden können.
+
+| Bezugspunkt | Dimension | Zuordnung und Begründung für diesen Prototyp |
+|---|---|---|
+| Aufgabe/Teilprozess: Start, Dialog, Feedback, Profilspeicherung | **Process specification** | **Imperative process modelling.** Die Anwendung legt Schritte und bedingte Zweige vorab fest: Start → Regie → gegebenenfalls Coach/Entscheidung → Kunde → bestätigte Runde; nach Abschluss und Anforderung Bewertung → Coach; nach gesonderter Aktion Speicherung. Freiwillige Zweige machen den Ablauf nicht zu einem unverbindlichen Referenzprozess. [M, E S. 1] |
+| Aufgabe/Teilprozess | **Execution constraints** | **Strict** für Typen, Wertebereiche, Reihenfolge, Zustandsübernahme und Speicherung; **Strict & Soft** bei den Modellaufgaben: ein festes Ausgabeformat und fiktive Fakten werden mit flexibler, situationsgerechter Sprache verbunden. Der Ton ist eine weiche Vorgabe; JSON-Typen, Stufen, ±1-Stimmung und Belegstellen werden in Python hart geprüft. Die Einordnung wird je Teilprozess konkretisiert. [M, E S. 1] |
+| Aufgabe/Teilprozess | **Participating agents** | **Dedicated.** Dialog verwendet die vorher festgelegten Rollen Regie und Kunde; Hinweisphasen den Coach; Auswertung Bewertung und Coach. Rollen werden weder aus einem Pool gewählt noch während der Laufzeit generiert. Startauswahl, SQL und Audio sind Anwendungsfunktionen. [M, E S. 1] |
+| Je Regie, Kunde, Bewertung, Coach | **Role** | **Specialist** für alle vier Rollen: Zustandsvorschlag, Kundenreaktion, kriteriumsbezogene Beobachtung beziehungsweise Formulierungshilfe. Dass dieselbe Modell-API verwendet werden kann, hebt die unterschiedlichen Aufgaben und Übergaben nicht auf. [M, E S. 2] |
+| Je Agent | **Tools** | Den Modellrollen sind **keine selbst aufrufbaren Tools** zugewiesen. Die Originalbox enthält für Tools keine Option „None“; eine solche Option wird daher nicht erfunden. Falls die Gesamtlösung mit Adaptern beschrieben wird, sind diese feste, dedizierte Werkzeuge der **Anwendung**. Der Agent kann weder SQL noch Mikrofon, Transkription, Audioausgabe oder eine echte Auszahlung auslösen. [M, E S. 2] |
+| Je Agent | **Additional knowledge base** | **Examples** für die gezielt übergebenen fiktiven Fallkarten, Kriterien, Bewertungsstufen und Beispielformulierungen. Regie bekommt interne Fallregeln, Kunde nur die Persona und sichtbare Informationen, Bewertung Fall/Rubrik und bestätigten Dialog. Der Coach erhält die für seinen aktuellen Auftrag nötigen Beobachtungen und Formulierungsvorgaben. SQLite ist eine anwendungsseitige Datenquelle für den Profilvorschlag; daraus folgt kein direkter Datenbankzugang der Modellrollen und kein Webzugang. [M, E S. 2] |
+| Je Agent und zugeordneter Kontext | **Memory** | **Short-term** durch den je Übung von der Anwendung gehaltenen Gesprächskontext und seine gezielte Übergabe an Regie, Kunde und Bewertung. Coach-Aufrufe sind ebenfalls aus dem aktuellen Kontext gespeist, haben aber keinen eigenen dauerhaften Speicher. **Long-term** besteht freiwillig und anwendungsseitig über Übungen hinweg: SQLite hält kompakte Beobachtungen und liefert nach Freigabe einen Fokusvorschlag. Ein einzelner Modellaufruf speichert dadurch nicht selbstständig frühere Chats. [M, E S. 2] |
+| Je Agent | **System insights** | **Selected observations.** Jede Rolle erhält fest ausgewählte Gesprächsdaten und Anwendungszustände: etwa Stimmung für die Kundin, bestätigte Runden für die Bewertung und Beobachtungen für den Coach. Die Regie sieht zusätzlich die für ihre Aufgabe nötigen internen Fallfakten. Es gibt keine freie Einsicht in sämtliche Modellaufrufe, internen Modellzustände oder andere Profile. Die Übergabe eines appseitigen Ärgerwerts wird nicht als Zugriff auf interne Modellgedanken ausgegeben. [M, E S. 2] |
+| Dialoggruppe und Feedbackgruppe | **Responsibility distribution** | **Preassigned.** Die Zuständigkeiten jeder Rolle stehen vor dem Start fest. Regie, Kunde, Bewertung und Coach verteilen ihre Aufgaben nicht selbst neu. [M, E S. 2] |
+| Dialoggruppe und Feedbackgruppe | **Rights distribution** | **Preassigned.** Die Regie darf strukturierte Vorschläge machen, die Bewertung Stufe und Belegstelle wählen, Kunde und Coach Texte formulieren. Python validiert und bestätigt Zustand, Fallhinweis, Ende und Speicherung. Mitarbeitende entscheiden über Coach-Abruf, Entwurf, Abbruch, Feedback und Profilfreigaben. Die Regie besitzt keine allgemeinen Managerrechte. [M, E S. 3] |
+| Dialoggruppe und Feedbackgruppe | **Interaction structure** | **Deterministic.** Reihenfolge und Bedingungen sind vorab programmiert. Eine zentrale Python-Funktion als Orchestrator macht die Struktur nicht zur Box-Option „Centralized“: Diese setzt laut Erläuterung einen zentralen **Agenten** voraus, der die nächste Interaktion bestimmt. Der Prototyp hat keinen solchen Manageragenten. [M, E S. 3] |
+
+**M** = „Morphologische Box (1) (1).pdf“, S. 1. **E** = „Ergaenzende Erklaerungen zur Morphologischen Box (1).pdf“. Die maßgeblichen Originaloptionen und Ebenen stehen in M; die Begriffsabgrenzungen stehen in E. Beispiele aus E: „made separately for each agent“ (S. 1), „preassigned where each agent is explicitly assigned responsibilities“ (S. 2), „a central agent manages all interactions“ (S. 3).
+
+## Vier Rollen und begrenzte Übergaben
+
+| Rolle | Benötigter Kontext | Ergebnis | Anwendungsprüfung und Grenze |
+|---|---|---|---|
+| Regie | Gewählter Fall, nötige interne Fakten, bestätigter Verlauf, aktuelle Aussage, Stimmung, optionaler Fokus | Vorschläge zu Ärger/Vertrauen, Hinweis, Nachfrage und Vereinbarung; im abgesicherten Modus gegebenenfalls Regel-ID und wörtlicher Beleg | Feldtypen und Werte, maximal ±1, Skala 1–5; kritischer Eingriff nur für die konkrete belegte Fallregel |
+| Kunde | Persona, Einstieg, sichtbarer Verlauf, aktueller Beitrag, neue Stimmung und Status | Kurze Kundenreaktion | Gültiger Text; die Anwendung ergänzt freigegebenen Hinweis und Nachfrage und übernimmt erst dann die Runde |
+| Bewertung | Bestätigte Runden, Fall, Kriterien und vier Bewertungsstufen | Stufe und Beleg-Rundennummer je Kriterium | Gültige Stufe, existierende bestätigte Runde, Originalzitat aus dem gespeicherten Text; Unterstützungsmarkierung bleibt sichtbar |
+| Coach | Anlass und freigegebener Gesprächskontext beziehungsweise bewertete Beobachtungen, optional Fokus, Gesprächsausgang | Kurzer Tipp, nach Abschluss mit Beispielformulierung | Gültiger kurzer Text; kein Recht zum Übernehmen eines Entwurfs, Ändern des Gesprächs oder Speichern eines Profils |
+
+Verborgene Fallhinweise werden dem Kunden-Agenten nicht vorsorglich vollständig übergeben. Die Regie kann eine Freigabe vorschlagen; die Anwendung fügt den Hinweis gezielt in die sichtbare Kundenantwort ein. Eine fehlgeschlagene Modellantwort darf keine halbe Runde, vorgezogene Stimmungsänderung oder vorzeitig sichtbaren Hinweis hinterlassen. Bei einem offenen Coach-Entwurf bleiben bestätigter Verlauf, Stimmung und Freigaben unverändert.
+
+Ein Tipp nach Abschluss ist unabhängig vom Coach-Modus im Gespräch. Auch bei „Aus“ kann eine abgeschlossene Übung auf ausdrücklichen Wunsch bewertet werden. Die Modi betreffen die beiden Eingriffe während des laufenden Dialogs.
+
+## Gedächtnis und freiwillige Personalisierung
+
+Das **Short-Term Memory** ist der flüchtige Zustand einer Übung: Fall-ID, Fokus samt Quelle, Selbsteinschätzung, bestätigter Verlauf, Ärger, Vertrauen, bekannte Hinweise und gegebenenfalls Coach-Entwurf. Ein Entwurf ist Gesprächsdatenbestand, aber keine bestätigte Runde und keine Bewertungsgrundlage. Servicezitate werden aus diesem bestätigten Transkript gelesen.
+
+Das **Long-Term Memory** ist ein freiwilliges, anwendungsseitiges Lernprofil. Nach vorhandenem Feedbackbericht und ausdrücklicher Speicheraktion werden je Übung und fiktivem Profil höchstens einmal kompakte Kriterienbeobachtungen mit Bewertungsstufe, Zeitpunkt und Hilfemarkierung gespeichert. Transkript, Audio, Originalzitate und Umfrageantworten verbleiben in der Übung. „Keine Gelegenheit“ bedeutet eine fehlende Beobachtung und darf nicht als schlechte Leistung zählen.
+
+Die App ruft einen neuen Vorschlag erst ab, wenn „Lernprofil nutzen“ gewählt wurde, und übergibt die resultierende Kriterien-ID als `profil_fokus` an `starte(...)`. Ein leeres Profil liefert keinen Fokus und erlaubt den Fallstandard. Manuelle Wahl und freiwillige Umfrage behalten ihren Vorrang. Die konkrete reproduzierbare Auswahlregel und die Demonstration mit zwei Übungen gehören zur Lernprofil-Dokumentation und ihren Tests.
+
+„Lernen“ meint diese spätere Auswahl von Trainingsinhalten anhand gespeicherter Beobachtungen. Es findet kein Training oder Fine-Tuning eines Foundation Models statt. Das entspricht auch der ausdrücklichen Scope-Grenze in den Kick-off-Folien, S. 20.
+
+## Kursrahmen, TRL 3 und Workshopbezug
+
+| Quelle und verifizierte Seite | Relevante Passage | Folgerung für die Abgabe |
+|---|---|---|
+| `00_Kickoff_16.10.2026 (1).pdf`, S./Folie 20 | „Zwei aufeinander abgestimmte Prototypen (konzeptionell integriert, nicht technisch integriert)“; „Backend-Prototyp inklusive simplem Frontend“; „Proof of Concept; Technology Readiness Level TRL 3“ | Backend-Demo und Figma zeigen dieselben Fälle, Aktionen und Zustände und bleiben eigenständig nutzbar. Die drei Hackathon-Tage begrenzen den Fallumfang. |
+| Dasselbe PDF, S./Folie 21 | „lauffähiger Software-Prototyp ... Funktionstüchtigkeit der geplanten Anwendung demonstriert“ | Reproduzierbare Tests und ein ausführbarer Durchlauf sind der lokale Funktionsnachweis. Ein regelbasierter Testmodus prüft Orchestrierung, ersetzt aber keinen Live-Nachweis der GenAI-Qualität. |
+| Dasselbe PDF, S./Folie 25 | „Lauffähig & kommentiert“, „Eignung und Nachvollziehbarkeit der Architektur (inkl. Orchestrierung)“, „Backend-Performance“ | Kommentierte Regeln, nachvollziehbare Übergaben, Originalbelege und ausgewiesene Modellaufrufe gehören zur Abgabe. Antwortzeit muss am Live-System separat beobachtet werden. |
+| Dasselbe PDF, S./Folie 31 | „Trainingsbot spielt den Kunden“; Zielgruppe insbesondere neue Mitarbeitende; „Optional: KI-Feedback nach dem Gespräch“ | Der fiktive Petra-Fall und freiwilliges Feedback passen direkt zu Use Case 3. Eine Zusage ist ein Übungsbeitrag und keine reale Finanzaktion. |
+| `30.10.2026_Workshop_Coding.pdf`, PDF-S. 32 / gedruckte Folie 47 | Agent besitzt eine spezifische Rolle; eine Aufgabe ist ein spezifischer Auftrag; Crew legt Zusammenarbeit und Ablauf fest | Vier getrennte Rollen und explizite Datenübergaben folgen dem Workshopmuster. Rollen können denselben Modelladapter verwenden. |
+| Dasselbe PDF, PDF-S. 36 / gedruckte Folie 51 | Gegenüberstellung „Deterministische Interaktion“ und „Zentralisierte Interaktion“ | Die fest codierten Aufrufketten mit Bedingungen sind deterministisch. |
+| Dasselbe PDF, PDF-S. 37–38 / gedruckte Folien 52–53 | Zwei Researcher liefern Vorschläge, Professor erhält beide; Crew wird für den UI-Aufruf in einer Funktion gekapselt | Die Lösung übernimmt die Trennung von Spezialauftrag, Ergebnisübergabe und importierbarer Backendfunktion. Die konkrete Researcher-Crew ist ein Lehrbeispiel, keine zusätzliche Produktanforderung. |
+| `ISE_Techstack.pdf`, S. 1 und 3–4 | Auswahl „obliegt grundsätzlich Ihrem Team“; CrewAI und Streamlit sind Empfehlungen | Bestehende Python-/FastAPI-Basis und `Modell.antwort(...)` bleiben erhalten. Ein Frameworkwechsel ist für den PoC nicht nötig. SQLite ist durch den aktuellen Arbeitsauftrag als Profilvorschlag konkretisiert. |
+| `ISE_Variante_B_Backend_Architektur.pdf`, S. 2–5 | Person 1: Training und Lernprofil; Person 2: Sprache und API; „Regie schlägt vor, Python prüft“; erster Meilenstein: „Person 1 testet eine Runde per Text“ | Kern und Transport werden getrennt entwickelt. Die gemeinsame Abnahme beginnt am Petra-Fall ohne Umfrage und erweitert sich dann auf Sprache, Coach und Lernprofil. |
+
+Die Workshoplösung `Aufgabe_1_Blablador.py` zeigt feste `Agent`- und `Task`-Definitionen, `allow_delegation=False`, die Übergabe `context=[writing_1, writing_2]` sowie die gekapselte Funktion `crew_1(topic)`. `Aufgabe_2_Blablador.py` importiert diese Funktion in die Oberfläche. Diese Muster begründen Rollen, feste Zuständigkeit und Datenübergaben. Die Workshopdateien wurden als Quelltext gelesen, nicht ausgeführt; ihre `.env` wurde nicht verwendet.
+
+## Nachvollziehbarkeit und Antwortzeit
+
+Eine reguläre Runde benötigt nacheinander einen Regie- und einen Kundenaufruf. Das ist fachlich nötig, damit die Kundenreaktion den validierten neuen Zustand verwendet. Ein automatischer Coach-Hinweis hält zwischen den Beiträgen an; Petra wird erst nach der Nutzerentscheidung aufgerufen. Die abschließende Bewertung und der Coach benötigen auf Wunsch zwei weitere Aufrufe. Der einfache Regelmodus erlaubt diese Übergänge ohne Netzwerk und mit nachgebildeten Fehlern zu prüfen.
+
+Für den Live-Nachweis sind getrennt zu prüfen: Befolgung der Ausgabeformate, plausible Kundenreaktion, gezielte Hinweisfreigabe, kritische Regel mit belegter Zusage, Qualität der Bewertungsbelege und Antwortzeit. End-to-End-Sprachzeiten gehören zur Person-2-Integration. Der erfolgreiche lokale Regeldurchlauf und ein nachgebildeter HTTP-Vertrag werden nicht als bereits geprüfter Blablador-Livebetrieb ausgegeben.
+
+Die Weiterentwicklung sollte diese Grenzen erhalten: ein stabiler Sprechknopf zuerst; automatische Erkennung des Redebeitragsendes als späterer Ausbau; eine Stimme je Fall; die bestätigte Rundennummer als Wiedergabequelle. Audio- und Datenzugriff bleiben Aufgabe der Anwendung und erweitern nicht stillschweigend die Entscheidungsrechte der Agenten.

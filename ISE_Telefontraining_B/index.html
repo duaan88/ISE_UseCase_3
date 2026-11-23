@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Telefontraining</title>
+  <style>
+    :root { color-scheme: light; --text: #172840; --muted: #52647a; --blue: #1657a6; --line: #d4deea; --pale: #edf4fd; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f6f8fb; color: var(--text); font: 16px/1.55 "Source Sans 3", "Segoe UI", system-ui, sans-serif; }
+    main { width: min(100% - 32px, 860px); margin: 40px auto 56px; }
+    h1, h2, h3 { line-height: 1.18; margin: 0 0 12px; }
+    h1 { font-size: clamp(2rem, 5vw, 2.65rem); letter-spacing: -.035em; }
+    h2 { font-size: 1.45rem; }
+    h3 { font-size: 1.1rem; }
+    p { margin: 0 0 14px; }
+    .muted { color: var(--muted); }
+    section { margin-top: 20px; background: white; padding: clamp(16px, 4vw, 28px); border: 1px solid var(--line); border-radius: 14px; }
+    fieldset { padding: 0; margin: 18px 0; border: 0; }
+    legend { font-size: 1.15rem; font-weight: 650; padding: 0; }
+    label { display: block; font-weight: 600; margin-top: 12px; }
+    select, textarea, button { font: inherit; }
+    select, textarea { width: 100%; display: block; color: var(--text); background: white; border: 1px solid #aabbd0; border-radius: 8px; padding: 8px 10px; margin-top: 4px; }
+    textarea { min-height: 82px; resize: vertical; }
+    .frage { display: grid; grid-template-columns: 1fr 160px; gap: 16px; align-items: end; margin: 10px 0; }
+    .frage label, .frage select { margin: 0; }
+    .actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+    button { border: 1px solid var(--blue); border-radius: 8px; padding: 8px 13px; color: var(--blue); background: white; cursor: pointer; font-weight: 650; }
+    button.primary { color: white; background: var(--blue); }
+    button.abort { color: #963237; border-color: #bd8387; }
+    button:disabled { opacity: .55; cursor: wait; }
+    :is(select, textarea, button):focus-visible { outline: 3px solid #579ae4; outline-offset: 3px; }
+    [hidden] { display: none !important; }
+    #meldung { position: sticky; top: 8px; z-index: 1; margin-top: 12px; padding: 8px 12px; background: white; border: 1px solid var(--line); border-radius: 8px; }
+    #meldung:empty { display: none; }
+    #meldung.fehler { color: #962d32; }
+    .stand { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 10px 0; margin-bottom: 14px; }
+    .stand p { margin: 3px 0; }
+    meter { width: 100px; vertical-align: middle; margin-left: 8px; }
+    #verlauf { display: grid; gap: 8px; margin: 0; }
+    .beitrag { background: #f4f6f9; border-radius: 8px; padding: 10px 12px; overflow-wrap: anywhere; }
+    .beitrag.kunde { background: var(--pale); }
+    .beitrag p { margin: 2px 0 0; white-space: pre-wrap; }
+    .beobachtung { border-top: 1px solid var(--line); padding: 10px 0; }
+    .beobachtung p { margin: 4px 0 0; overflow-wrap: anywhere; }
+    blockquote { margin: 6px 0 0; border-left: 2px solid #aabbd0; padding-left: 10px; overflow-wrap: anywhere; }
+    @media (max-width: 560px) { main { margin-top: 20px; } .frage { grid-template-columns: 1fr; gap: 5px; } }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Telefontraining</h1>
+  <p class="muted">Übe schwierige Kundengespräche mit fiktiven Fällen.</p>
+  <div id="meldung" role="status" aria-live="polite"></div>
+
+  <section id="vorbereitung">
+    <h2>Übung vorbereiten</h2>
+    <form id="start-form">
+      <label for="fall">Übungsfall</label>
+      <select id="fall" required></select>
+      <fieldset>
+        <legend>Selbsteinschätzung</legend>
+        <p class="muted">1 bedeutet sehr unsicher, 5 bedeutet sehr sicher.</p>
+        <div id="fragen"></div>
+      </fieldset>
+      <label for="fokus">Trainingsfokus</label>
+      <select id="fokus"><option value="">Aus der Selbsteinschätzung ableiten</option></select>
+      <label for="modus">Modus</label>
+      <select id="modus"><option value="demo">Regelbasierter Beispieldurchlauf</option></select>
+      <div class="actions"><button class="primary" type="submit">Gespräch starten</button></div>
+    </form>
+  </section>
+
+  <section id="dialog" hidden aria-labelledby="falltitel">
+    <h2 id="falltitel"></h2>
+    <p id="dialogmodus" class="muted"></p>
+    <div class="stand" aria-live="polite">
+      <p id="trainingsfokus"></p>
+      <p><strong id="aergertext"></strong><meter id="aerger" min="1" max="5" value="4" aria-label="Ärger der Kundin oder des Kunden"></meter></p>
+      <p id="status"></p>
+    </div>
+    <div id="verlauf" role="log" aria-label="Gesprächsverlauf"></div>
+    <form id="antwort-form">
+      <label for="aussage">Deine Antwort als Servicekraft</label>
+      <textarea id="aussage" rows="3" maxlength="600" required></textarea>
+      <div class="actions">
+        <button class="primary" type="submit">Antwort senden</button>
+        <button id="beenden" type="button">Gespräch beenden</button>
+        <button class="abort" id="abbrechen" type="button">Übung abbrechen</button>
+      </div>
+    </form>
+    <div class="actions" id="abschluss" hidden>
+      <button class="primary" id="feedback" type="button">Feedback ansehen</button>
+      <button id="neu" type="button">Neue Übung</button>
+    </div>
+  </section>
+
+  <section id="auswertung" hidden aria-labelledby="feedbacktitel">
+    <h2 id="feedbacktitel">Feedback zur Übung</h2>
+    <p id="feedbackhinweis" class="muted"></p>
+    <div id="beobachtungen"></div>
+    <h3>Verlauf des Ärgers</h3>
+    <p id="stimmungsverlauf"></p>
+    <h3>Übungstipp</h3>
+    <p id="tipp"></p>
+  </section>
+</main>
+
+<script>
+  const element = (id) => document.getElementById(id);
+  let optionen;
+  let sitzung;
+  let wartet = false;
+
+  function text(tag, inhalt, klasse) {
+    const el = document.createElement(tag);
+    el.textContent = inhalt;
+    if (klasse) el.className = klasse;
+    return el;
+  }
+
+  function melde(inhalt, fehler = false) {
+    element("meldung").textContent = inhalt;
+    element("meldung").classList.toggle("fehler", fehler);
+  }
+
+  async function anfrage(pfad, daten, methode = "POST") {
+    const response = await fetch(pfad, daten === undefined
+      ? { method: methode }
+      : { method: methode, headers: { "Content-Type": "application/json" }, body: JSON.stringify(daten) });
+    if (response.status === 204) return;
+    const body = await response.json();
+    if (!response.ok) {
+      throw new Error(typeof body.detail === "string" ? body.detail : "Überprüfe deine Eingaben.");
+    }
+    return body;
+  }
+
+  async function ladeOptionen() {
+    try {
+      optionen = await anfrage("/api/optionen", undefined, "GET");
+      for (const [id, name] of Object.entries(optionen.faelle)) {
+        element("fall").add(new Option(name, id));
+      }
+      for (const [id, kriterium] of Object.entries(optionen.kriterien)) {
+        const zeile = document.createElement("div");
+        zeile.className = "frage";
+        const label = text("label", kriterium.frage);
+        label.htmlFor = "skala-" + id;
+        const skala = document.createElement("select");
+        skala.id = label.htmlFor;
+        skala.required = true;
+        skala.add(new Option("Bitte auswählen", ""));
+        for (let wert = 1; wert <= 5; wert++) skala.add(new Option(String(wert), String(wert)));
+        zeile.append(label, skala);
+        element("fragen").append(zeile);
+        element("fokus").add(new Option(kriterium.titel, id));
+      }
+      if (optionen.ki_verfuegbar) element("modus").add(new Option("KI-Modus mit Blablador", "ki"));
+    } catch (error) {
+      melde(error.message, true);
+    }
+  }
+
+  function beitrag(rolle, aussage, istKunde) {
+    const artikel = document.createElement("article");
+    artikel.className = istKunde ? "beitrag kunde" : "beitrag";
+    artikel.append(text("strong", rolle), text("p", aussage));
+    return artikel;
+  }
+
+  function zeigeSitzung() {
+    element("vorbereitung").hidden = Boolean(sitzung);
+    element("dialog").hidden = !sitzung;
+    element("auswertung").hidden = !sitzung?.bericht;
+    if (!sitzung) return;
+
+    element("falltitel").textContent = sitzung.titel;
+    element("dialogmodus").textContent = sitzung.modus === "ki" ? "KI-Modus mit Blablador" : "Regelbasierter Beispieldurchlauf";
+    element("trainingsfokus").textContent = "Trainingsfokus · " + sitzung.fokus;
+    element("aergertext").textContent = "Ärger · " + sitzung.aerger + " von 5";
+    element("aerger").value = sitzung.aerger;
+    const statusText = { "gelöst": "Trainingsziel erreicht", "Rundenlimit erreicht": "Rundenlimit erreicht" };
+    element("status").textContent = statusText[sitzung.status] || "Gespräch " + sitzung.status;
+
+    const verlauf = element("verlauf");
+    verlauf.replaceChildren(beitrag(sitzung.kundenrolle, sitzung.einstieg, true));
+    for (const runde of sitzung.runden) {
+      verlauf.append(beitrag("Servicekraft", runde.servicekraft, false), beitrag(sitzung.kundenrolle, runde.kunde, true));
+    }
+    element("antwort-form").hidden = sitzung.status !== "läuft";
+    element("abschluss").hidden = sitzung.status === "läuft";
+    element("feedback").hidden = !sitzung.feedback_moeglich || Boolean(sitzung.bericht);
+
+    if (!sitzung.bericht) return;
+    element("feedbackhinweis").textContent = sitzung.modus === "ki"
+      ? "Selbsteinschätzung und beobachtetes Verhalten in diesem Gespräch."
+      : "Beispielfeedback aus vereinfachten Regeln für den lokalen Durchlauf.";
+    const beobachtungen = element("beobachtungen");
+    beobachtungen.replaceChildren();
+    for (const [id, eintrag] of Object.entries(sitzung.bericht.beobachtungen)) {
+      const abschnitt = document.createElement("div");
+      abschnitt.className = "beobachtung";
+      abschnitt.append(
+        text("strong", optionen.kriterien[id].titel),
+        text("p", "Selbsteinschätzung " + sitzung.einschaetzung[id] + "/5 · Im Gespräch " + eintrag.stufe),
+      );
+      if (eintrag.zitat) abschnitt.append(text("blockquote", "Runde " + eintrag.runde + " · „" + eintrag.zitat + "“"));
+      beobachtungen.append(abschnitt);
+    }
+    element("stimmungsverlauf").textContent = [
+      "Start 4/5", ...sitzung.runden.map((runde) => "Runde " + runde.runde + " " + runde["ärger"] + "/5"),
+    ].join(" · ");
+    element("tipp").textContent = sitzung.bericht.tipp;
+  }
+
+  async function ausfuehren(arbeit, hinweis, danach) {
+    if (wartet) return;
+    wartet = true;
+    element("aussage").readOnly = true;
+    const buttons = document.querySelectorAll("button");
+    buttons.forEach((button) => button.disabled = true);
+    melde(hinweis);
+    try {
+      sitzung = await arbeit();
+      zeigeSitzung();
+      melde("");
+      if (danach) danach();
+    } catch (error) {
+      melde(error.message + " Du kannst es erneut versuchen.", true);
+    } finally {
+      wartet = false;
+      element("aussage").readOnly = false;
+      buttons.forEach((button) => button.disabled = false);
+    }
+  }
+
+  function aktion(name, aussage = "", danach) {
+    const hinweis = { antwort: "Kundenantwort wird vorbereitet …", feedback: "Feedback wird erstellt …" };
+    return ausfuehren(
+      () => anfrage("/api/training/" + sitzung.id, { aktion: name, version: sitzung.version, aussage }),
+      hinweis[name] || "Übung wird abgeschlossen …", danach,
+    );
+  }
+
+  element("start-form").addEventListener("submit", (event) => {
+    event.preventDefault();
+    if (!optionen) return;
+    const einschaetzung = Object.fromEntries(
+      Object.keys(optionen.kriterien).map((id) => [id, Number(element("skala-" + id).value)]),
+    );
+    ausfuehren(() => anfrage("/api/training", {
+      fall: element("fall").value, einschaetzung, fokus: element("fokus").value || null, modus: element("modus").value,
+    }), "Gespräch wird vorbereitet …", () => element("aussage").focus());
+  });
+  element("antwort-form").addEventListener("submit", (event) => {
+    event.preventDefault();
+    aktion("antwort", element("aussage").value, () => {
+      element("aussage").value = "";
+      if (sitzung.status === "läuft") element("aussage").focus();
+    });
+  });
+  element("beenden").addEventListener("click", () => aktion("beenden"));
+  element("abbrechen").addEventListener("click", () => aktion("abbrechen"));
+  element("feedback").addEventListener("click", () => aktion("feedback"));
+  element("neu").addEventListener("click", () => ausfuehren(
+    () => anfrage("/api/training/" + sitzung.id, undefined, "DELETE"),
+    "Neue Übung wird vorbereitet …", () => {
+      element("aussage").value = "";
+      element("fall").focus();
+    },
+  ));
+  ladeOptionen();
+</script>
+</body>
+</html>

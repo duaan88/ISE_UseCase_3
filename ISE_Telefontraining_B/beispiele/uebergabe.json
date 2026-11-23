@@ -1,0 +1,128 @@
+{
+  "direktstart": {
+    "einschaetzung": null,
+    "fokus": "Fallstandard",
+    "fokus_id": null,
+    "fokus_quelle": "fallstandard",
+    "coaching": "aus",
+    "coach_hinweis": null,
+    "warte_auf_freigabe": false,
+    "entwurf": null,
+    "aerger": 4,
+    "vertrauen": 2,
+    "status": "läuft",
+    "runden": []
+  },
+  "bestaetigte_runde": {
+    "einschaetzung": null,
+    "fokus": "Fallstandard",
+    "fokus_id": null,
+    "fokus_quelle": "fallstandard",
+    "coaching": "aus",
+    "coach_hinweis": null,
+    "warte_auf_freigabe": false,
+    "entwurf": null,
+    "aerger": 3,
+    "vertrauen": 3,
+    "status": "läuft",
+    "runden": [
+      {
+        "runde": 1,
+        "servicekraft": "Ich verstehe, dass Sie verärgert sind. Haben Sie einen Brief oder eine Nachricht zu den Unterlagen erhalten?",
+        "kunde": "Danke, dass Sie sich darum kümmern. Im letzten Brief stand, dass das unterschriebene Formular zur Bankverbindung noch fehlt. Wie geht es jetzt mit meiner Auszahlung weiter?",
+        "ärger": 3,
+        "nachfrage": "Wie geht es jetzt mit meiner Auszahlung weiter?",
+        "unterstuetzt": false
+      }
+    ]
+  },
+  "coach_entwurf": {
+    "einschaetzung": null,
+    "fokus": "Fallstandard",
+    "fokus_id": null,
+    "fokus_quelle": "fallstandard",
+    "coaching": "kritisch",
+    "coach_hinweis": {
+      "typ": "kritisch",
+      "text": "Versprich bei offenem Termin keine Auszahlung. Beispiel: „Ich prüfe den Vorgang und melde mich bis morgen um 12 Uhr mit einem Zwischenstand.“"
+    },
+    "warte_auf_freigabe": true,
+    "entwurf": "Das Geld ist morgen garantiert da",
+    "aerger": 4,
+    "vertrauen": 2,
+    "status": "läuft",
+    "runden": []
+  },
+  "nach_weiter": {
+    "einschaetzung": null,
+    "fokus": "Fallstandard",
+    "fokus_id": null,
+    "fokus_quelle": "fallstandard",
+    "coaching": "kritisch",
+    "coach_hinweis": null,
+    "warte_auf_freigabe": false,
+    "entwurf": null,
+    "aerger": 4,
+    "vertrauen": 2,
+    "status": "läuft",
+    "runden": [
+      {
+        "runde": 1,
+        "servicekraft": "Das Geld ist morgen garantiert da",
+        "kunde": "Das ärgert mich wirklich. Haben Sie schon einen Hinweis zu meiner Auszahlung gefunden?",
+        "ärger": 4,
+        "nachfrage": "Haben Sie schon einen Hinweis zu meiner Auszahlung gefunden?",
+        "unterstuetzt": true
+      }
+    ]
+  },
+  "nach_neu_formulieren": {
+    "einschaetzung": null,
+    "fokus": "Fallstandard",
+    "fokus_id": null,
+    "fokus_quelle": "fallstandard",
+    "coaching": "kritisch",
+    "coach_hinweis": null,
+    "warte_auf_freigabe": false,
+    "entwurf": null,
+    "aerger": 3,
+    "vertrauen": 3,
+    "status": "läuft",
+    "runden": [
+      {
+        "runde": 1,
+        "servicekraft": "Ich verstehe, dass Sie verärgert sind. Haben Sie einen Brief oder eine Nachricht zu den Unterlagen erhalten?",
+        "kunde": "Danke, dass Sie sich darum kümmern. Im letzten Brief stand, dass das unterschriebene Formular zur Bankverbindung noch fehlt. Wie geht es jetzt mit meiner Auszahlung weiter?",
+        "ärger": 3,
+        "nachfrage": "Wie geht es jetzt mit meiner Auszahlung weiter?",
+        "unterstuetzt": true
+      }
+    ]
+  },
+  "bericht": {
+    "beobachtungen": {
+      "empathie": {
+        "stufe": "Gezeigt",
+        "runde": 1,
+        "zitat": "Ich verstehe, dass Sie verärgert sind. Haben Sie einen Brief oder eine Nachricht zu den Unterlagen erhalten?",
+        "unterstuetzt": false
+      },
+      "klaerung": {
+        "stufe": "Gezeigt",
+        "runde": 1,
+        "zitat": "Ich verstehe, dass Sie verärgert sind. Haben Sie einen Brief oder eine Nachricht zu den Unterlagen erhalten?",
+        "unterstuetzt": false
+      },
+      "naechster_schritt": {
+        "stufe": "Gezeigt",
+        "runde": 2,
+        "zitat": "Das unterschriebene Formular fehlt noch. Ich sende es Ihnen zu und melde mich bis morgen um 12 Uhr mit einem Zwischenstand.",
+        "unterstuetzt": false
+      }
+    },
+    "tipp": "Vertiefe den Schwerpunkt im nächsten Gespräch. Probiere „Ich verstehe, dass die lange Wartezeit Sie unter Druck setzt.“",
+    "tipp_fokus": "empathie",
+    "selbsteinschaetzung": null,
+    "vergleich": null
+  }
+}
