@@ -1,0 +1,63 @@
+{
+  "contract_version": "0.3",
+  "session_id": "demo-unclear-001",
+  "version": 3,
+  "snapshot_version": 3,
+  "usage_mode": "anonymous",
+  "training_mode": "testing",
+  "scenario_id": "payout_missing",
+  "scenario_version": "synthetic-0.1",
+  "knowledge_version": "synthetic-0.1",
+  "difficulty": {
+    "preset": "hard",
+    "emotional_intensity": 3,
+    "technical_complexity": 3,
+    "ambiguity": 3,
+    "conversational_dynamics": 3,
+    "information_load": 3
+  },
+  "coach_enabled": false,
+  "profile_id": null,
+  "consent_to_store": false,
+  "status": "completed",
+  "end_reason": "user_finished",
+  "feedback_status": "not_requested",
+  "feedback": null,
+  "messages": [
+    {
+      "id": "unclear-m001",
+      "role": "customer",
+      "turn": 0,
+      "assisted": false,
+      "text": "Mit der angekündigten Sache stimmt etwas nicht. Ich weiß nicht, was ich noch machen soll."
+    },
+    {
+      "id": "unclear-m002",
+      "role": "trainee",
+      "turn": 1,
+      "assisted": false,
+      "text": "Geht es um eine ausstehende Zahlung oder um eine fehlende Rückmeldung?"
+    },
+    {
+      "id": "unclear-m003",
+      "role": "customer",
+      "turn": 1,
+      "assisted": false,
+      "text": "Um die Auszahlung. Seit drei Wochen ist das Geld nicht da."
+    },
+    {
+      "id": "unclear-m004",
+      "role": "trainee",
+      "turn": 2,
+      "assisted": false,
+      "text": "Haben Sie einen Brief oder eine Nachricht über fehlende Unterlagen erhalten?"
+    },
+    {
+      "id": "unclear-m005",
+      "role": "customer",
+      "turn": 2,
+      "assisted": false,
+      "text": "Ja. Das unterschriebene Formular zur Bankverbindung fehlt noch."
+    }
+  ]
+}

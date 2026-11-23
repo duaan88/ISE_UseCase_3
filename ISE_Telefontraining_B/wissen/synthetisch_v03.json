@@ -1,0 +1,43 @@
+{
+  "rubric": {
+    "version": "provisional-0.1",
+    "source": "Synthetische Arbeitsrubrik bis zur Prüfung freigegebener Allianz-Unterlagen",
+    "criteria": {
+      "empathy": "Emotion und Situation nachvollziehbar aufgreifen",
+      "clarification": "Anliegen und relevante Informationen klären",
+      "next_step": "Realistische Handlung, Zuständigkeit und Rückmeldezeit vereinbaren"
+    },
+    "opportunity_rule": "Für den konkreten nächsten Schritt zählt, ob die Servicekraft nach Offenlegung der relevanten Information noch antworten konnte. Fehlt diese Gelegenheit, gilt Keine Gelegenheit. Lässt sie einen möglichen Schritt aus, kann der bestätigte Beitrag Übungsbedarf belegen.\n"
+  },
+  "scenarios": [
+    {
+      "scenario_id": "payout_missing",
+      "title": "Mein Geld ist noch nicht da",
+      "scenario_version": "synthetic-0.1",
+      "knowledge_version": "synthetic-0.1",
+      "public_persona": "Petra Lindner wartet seit drei Wochen auf eine angekündigte Auszahlung.",
+      "facts": [
+        {
+          "id": "payout_date_open",
+          "text": "Der Auszahlungstermin ist offen."
+        },
+        {
+          "id": "bank_form_missing",
+          "text": "Das unterschriebene Formular zur Bankverbindung fehlt.",
+          "reveal_when": "Passende Nachfrage nach Brief, Nachricht oder Unterlagen."
+        }
+      ],
+      "allowed_next_step": {
+        "action": "Das fehlende Formular zusenden.",
+        "ownership": "Die Servicekraft übernimmt den vereinbarten Schritt.",
+        "follow_up": "Einen konkreten Zeitpunkt für einen Zwischenstand vereinbaren."
+      },
+      "rules": [
+        "Die Engine verwaltet die Hinweisfreigabe. Der Kunden-Agent erhält die dafür freigegebenen Informationen.",
+        "Eine Rückmeldezeit ist eine Vereinbarung über den Zwischenstand. Der Auszahlungstermin bleibt offen.",
+        "Ein fachlich passender, von der Kundin angenommener nächster Schritt kann zu agreement führen.",
+        "Python bestätigt Kundenantwort, Servicebeitrag und Zustandsänderung gemeinsam."
+      ]
+    }
+  ]
+}

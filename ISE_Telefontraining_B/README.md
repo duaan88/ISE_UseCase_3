@@ -2,6 +2,19 @@
 
 Trainingskern für den fiktiven Petra-Fall: Direktstart ohne Umfrage, vier spezialisierte Agentenrollen, freiwilliger Fokus, Gesprächsgedächtnis, Coach und optionales SQLite-Lernprofil. Der Python-/FastAPI-Stack bleibt erhalten. Alle Fallfakten, Auszahlungen, Formulare und Fristen sind Übungsbeispiele.
 
+## Phase B · Anonyme Streamlit-Textübung nach Vertrag v0.3
+
+Im Projektordner installieren und starten:
+
+```bash
+python -m pip install -r requirements-streamlit.txt
+python -m streamlit run streamlit_app.py --browser.gatherUsageStats false
+```
+
+„Testgespräch“ nutzt feste fiktive Dialoge und nachgebildete Bewertungen ohne API-Key. Mit gesetztem `BLABLADOR_API_KEY` bietet „Gesprächskern“ beide Fälle aus Person As Backend an. Dabei antwortet das lokale Kundenmodell. Erst „Feedback ansehen“ sendet das fiktive Transkript zur Bewertung an Blablador. Der Bericht belegt seine Beobachtungen mit Originalaussagen aus bestätigten Runden und zeigt die Schwierigkeit separat.
+
+[Startanleitung, Tests und Anschluss an Person A](docs/PERSON_B_V03.md) · [Backend-Übergabe von Person A](PHASE_B_PERSON_A.md)
+
 ## Direkt starten und prüfen
 
 Der Kern braucht Python 3.10 oder neuer und ausschließlich die Standardbibliothek. Lokal geprüft mit Python 3.12. Alle Befehle im entpackten Projektordner ausführen:

@@ -1,0 +1,77 @@
+{
+  "contract_version": "0.3",
+  "session_id": "demo-emotional-001",
+  "version": 4,
+  "snapshot_version": 4,
+  "usage_mode": "anonymous",
+  "training_mode": "testing",
+  "scenario_id": "payout_missing",
+  "scenario_version": "synthetic-0.1",
+  "knowledge_version": "synthetic-0.1",
+  "difficulty": {
+    "preset": "hard",
+    "emotional_intensity": 3,
+    "technical_complexity": 3,
+    "ambiguity": 3,
+    "conversational_dynamics": 3,
+    "information_load": 3
+  },
+  "coach_enabled": false,
+  "profile_id": null,
+  "consent_to_store": false,
+  "status": "completed",
+  "end_reason": "user_finished",
+  "feedback_status": "not_requested",
+  "feedback": null,
+  "messages": [
+    {
+      "id": "emotional-m001",
+      "role": "customer",
+      "turn": 0,
+      "assisted": false,
+      "text": "Seit drei Wochen warte ich! Warum passiert hier nichts?"
+    },
+    {
+      "id": "emotional-m002",
+      "role": "trainee",
+      "turn": 1,
+      "assisted": false,
+      "text": "Da müssen Sie sich eben gedulden."
+    },
+    {
+      "id": "emotional-m003",
+      "role": "customer",
+      "turn": 1,
+      "assisted": false,
+      "text": "Genau das höre ich ständig. Ich möchte, dass Sie mein Problem ernst nehmen."
+    },
+    {
+      "id": "emotional-m004",
+      "role": "trainee",
+      "turn": 2,
+      "assisted": false,
+      "text": "Es tut mir leid, dass ich Sie gerade abgewiesen habe. Die Wartezeit belastet Sie. Welche Nachricht haben Sie zuletzt erhalten?"
+    },
+    {
+      "id": "emotional-m005",
+      "role": "customer",
+      "turn": 2,
+      "assisted": false,
+      "text": "Im letzten Brief stand, dass das unterschriebene Formular zur Bankverbindung noch fehlt."
+    },
+    {
+      "id": "emotional-m006",
+      "role": "trainee",
+      "turn": 3,
+      "assisted": false,
+      "text": "Gut, dann müssen Sie wohl noch etwas warten."
+    },
+    {
+      "id": "emotional-m007",
+      "role": "customer",
+      "turn": 3,
+      "assisted": false,
+      "text": "Aber was soll ich jetzt mit dem Formular machen?"
+    }
+  ]
+}
