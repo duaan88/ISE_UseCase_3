@@ -4,6 +4,7 @@ from functools import partial
 import importlib.util
 import os
 from uuid import uuid4
+from time import perf_counter
 
 import streamlit as st
 
@@ -36,7 +37,10 @@ def build_core(customer_model, evaluation_model):
 def start_form(state):
     has_core = all(importlib.util.find_spec(name) for name in CORE_MODULES)
     key = os.environ.get("BLABLADOR_API_KEY", "").strip()
-    mode = st.radio("Ablauf", ["Testgespräch", "Gesprächskern"] if has_core and key else ["Testgespräch"],
+    modes = ["Testgespräch"]
+    if has_core and key:
+        modes.extend(["Gesprächskern", "Live-Gespräch"])
+    mode = st.radio("Ablauf", modes,
                     horizontal=True)
     if mode == "Testgespräch":
         title = "Mein Geld ist noch nicht da"
@@ -56,7 +60,10 @@ def start_form(state):
         preset = st.selectbox("Schwierigkeit", PRESETS, index=1, format_func=PRESETS.__getitem__)
         modes = {"training": "Training", "testing": "Testing"}
         training_mode = st.radio("Übungsmodus", modes, horizontal=True, format_func=modes.__getitem__)
-        st.caption("Lokales Kundenmodell. Erst für angefordertes Feedback wird das fiktive Gespräch an Blablador gesendet.")
+        if mode == "Live-Gespräch":
+            st.caption("Blablador erzeugt die Kundenantworten und auf Wunsch das Feedback. Nur fiktive Angaben eingeben.")
+        else:
+            st.caption("Lokales Kundenmodell. Erst für angefordertes Feedback wird das fiktive Gespräch an Blablador gesendet.")
 
     if not st.button("Übung starten", type="primary"):
         return
@@ -66,7 +73,8 @@ def start_form(state):
         from customer_v03 import ExampleCustomerModel
         from training import Blablador
 
-        core = build_core(ExampleCustomerModel(), Blablador(key))
+        backend = Blablador(key, timeout=30)
+        core = build_core(backend if mode == "Live-Gespräch" else ExampleCustomerModel(), backend)
     try:
         view = core.start_session(
             contract_version="0.3", request_id=uuid4().hex, scenario_id=scenario_id,
@@ -98,12 +106,22 @@ def report_error(state, error):
 
 def act(state, operation, **fields):
     view = state.view
+    signature = (view["session_id"], view["version"], operation, fields)
+    previous = state.get("pending_action")
+    if previous is None or previous[0] != signature:
+        state.pending_action = (signature, uuid4().hex)
+    started = perf_counter()
     try:
         state.view = getattr(state.core, operation)(
-            view["session_id"], expected_version=view["version"], request_id=uuid4().hex, **fields)
+            view["session_id"], expected_version=view["version"], request_id=state.pending_action[1], **fields)
     except Exception as exc:
         report_error(state, exc)
+        if operation == "request_feedback" or exc.to_dict()["code"] in ("SESSION_NOT_FOUND", "VERSION_CONFLICT"):
+            state.pop("pending_action", None)
     else:
+        state.pop("pending_action", None)
+        if operation in ("submit_turn", "request_feedback"):
+            state[operation + "_seconds"] = perf_counter() - started
         if operation in ("submit_turn", "end_conversation"):
             state.reset_draft = True
     st.rerun()
@@ -119,6 +137,7 @@ def evidence_rows(evidence, messages):
 
 def render_feedback(report, messages):
     st.header("Feedback zur Übung")
+    st.caption(f"Rubrik {report['rubric_version']} · Gesprächsversion {report['snapshot_version']}")
     for item in report["criteria"]:
         st.write(CRITERIA.get(item["criterion_id"], item["criterion_id"]), "·", item["level"])
         st.text(item["rationale"])
@@ -136,9 +155,18 @@ def render_feedback(report, messages):
 
 
 def render_session(state):
-    view = state.view
+    try:
+        view = state.core.get_session(state.view["session_id"])
+    except Exception as exc:
+        report_error(state, exc)
+        st.rerun()
+    state.view = view
     difficulty = view["difficulty"]
     st.subheader(state.scenario_title)
+    if not state.fixture_mode:
+        for operation, label in (("submit_turn", "Letzte Gesprächsrunde"), ("request_feedback", "Bewertung")):
+            if (seconds := state.get(operation + "_seconds")) is not None:
+                st.caption(f"{label} · {seconds:.1f} s")
     st.caption(("Testgespräch · " if state.fixture_mode else "") +
                ("Training" if view["training_mode"] == "training" else "Testing"))
     with st.expander(f"Szenarioschwierigkeit · {PRESETS[difficulty['preset']]}"):
@@ -217,6 +245,8 @@ def main():
     if "view" in state:
         render_session(state)
     else:
+        for key in ("pending_action", "submit_turn_seconds", "request_feedback_seconds"):
+            state.pop(key, None)
         start_form(state)
 
 

@@ -1,6 +1,7 @@
 """Persistenztests ohne Netz, echte Personen oder Datenbankreste im Projekt."""
 
 from concurrent.futures import ThreadPoolExecutor
+from contextlib import closing
 from copy import deepcopy
 import json
 import os
@@ -75,7 +76,7 @@ class LernprofilTest(unittest.TestCase):
         self.assertTrue(zweites["gespeichert"])
         self.assertTrue(zweites["bereits_vorhanden"])
         self.assertEqual(self.vorschlag()["fokus"], "klaerung")
-        with sqlite3.connect(self.db) as db:
+        with closing(sqlite3.connect(self.db)) as db, db:
             self.assertEqual(db.execute("SELECT count(*) FROM uebungen").fetchone()[0], 1)
             self.assertEqual(db.execute("SELECT count(*) FROM beobachtungen").fetchone()[0], 3)
 
@@ -83,7 +84,7 @@ class LernprofilTest(unittest.TestCase):
         with ThreadPoolExecutor(max_workers=4) as pool:
             bestaetigungen = list(pool.map(lambda _: self.speichern("parallel"), range(4)))
         self.assertEqual(sum(not b["bereits_vorhanden"] for b in bestaetigungen), 1)
-        with sqlite3.connect(self.db) as db:
+        with closing(sqlite3.connect(self.db)) as db, db:
             self.assertEqual(db.execute("SELECT count(*) FROM beobachtungen").fetchone()[0], 3)
 
     def test_profile_bleiben_getrennt_auch_bei_gleicher_uebungs_id(self):
@@ -128,7 +129,7 @@ class LernprofilTest(unittest.TestCase):
 
     def test_kompakte_daten_enthalten_zeit_und_hilfe_aber_keine_gespraechstexte(self):
         self.speichern("mit-hilfe", unterstuetzt=True)
-        with sqlite3.connect(self.db) as db:
+        with closing(sqlite3.connect(self.db)) as db, db:
             spalten = {r[1] for r in db.execute("PRAGMA table_info(beobachtungen)")}
             self.assertEqual(spalten, {"profil_id", "uebung_id", "kriterium", "stufe", "unterstuetzt"})
             self.assertEqual(db.execute("SELECT SUM(unterstuetzt) FROM beobachtungen").fetchone()[0], 3)
@@ -146,18 +147,18 @@ class LernprofilTest(unittest.TestCase):
         for beobachtung in bericht["beobachtungen"].values():
             beobachtung["runde"] = 2
         fortschritt_speichern("fiktiv-a", "nicht-zitierte-hilfe", gespraech, bericht, db_pfad=self.db)
-        with sqlite3.connect(self.db) as db:
+        with closing(sqlite3.connect(self.db)) as db, db:
             self.assertEqual(db.execute("SELECT SUM(unterstuetzt) FROM beobachtungen").fetchone()[0], 0)
             self.assertEqual(db.execute("SELECT unterstuetzt FROM uebungen").fetchone()[0], 1)
 
     def test_aeltere_datenbank_wird_ohne_datenverlust_erweitert(self):
-        with sqlite3.connect(self.db) as db:
+        with closing(sqlite3.connect(self.db)) as db, db:
             db.execute("CREATE TABLE uebungen (profil_id TEXT, uebung_id TEXT, zeitpunkt TEXT, PRIMARY KEY (profil_id, uebung_id))")
             db.execute("CREATE TABLE beobachtungen (profil_id TEXT, uebung_id TEXT, kriterium TEXT, stufe TEXT, unterstuetzt INTEGER, PRIMARY KEY (profil_id, uebung_id, kriterium))")
             db.execute("INSERT INTO uebungen VALUES ('fiktiv-a', 'alt', '2026-01-01T00:00:00+00:00')")
             db.execute("INSERT INTO beobachtungen VALUES ('fiktiv-a', 'alt', 'klaerung', 'Übungsbedarf', 1)")
         self.speichern("neu")
-        with sqlite3.connect(self.db) as db:
+        with closing(sqlite3.connect(self.db)) as db, db:
             self.assertEqual(db.execute("SELECT unterstuetzt FROM uebungen WHERE uebung_id = 'alt'").fetchone()[0], 1)
         self.assertEqual(self.vorschlag()["fokus"], "klaerung")
 
