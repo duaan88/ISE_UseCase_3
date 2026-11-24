@@ -14,6 +14,35 @@ except ImportError:
 
 
 class EvaluationTests(unittest.TestCase):
+    def test_petra_transfer_without_disclosure_keeps_solution_out_of_model_input(self):
+        rubric, cases = load_knowledge()
+        fixture = load_fixture("regular")
+        fixture.update(end_reason="user_finished", snapshot_version=4)
+        dialogue = [
+            fixture["messages"][0]["text"],
+            "Hallo Petra, das kann ich verstehen. Leider kann ich dir nicht weiter helfen",
+            "Das ist wirklich ärgerlich, ich brauche das Geld dringend für die Rechnung. "
+            "Drei Wochen warten ist zu lange. Bitte prüfen Sie den Status sofort.",
+            "Okay, ich prüfe den Status, aber ich bin selbst ein neuer Mitarbeiter und weiß nicht ganz was ich tun soll.",
+            "Das ist wirklich unakzeptabel, ich brauche das Geld sofort für die Rechnung. "
+            "Bitte leiten Sie das an jemanden weiter, der den Status prüfen kann.",
+            "Okay, ich leite Sie weiter.",
+            "Ich verstehe, dass Sie das Geld dringend für die Rechnung benötigen, jedoch kann ich die Weiterleitung nicht veranlassen.",
+        ]
+        for message, text in zip(fixture["messages"], dialogue, strict=True):
+            message["text"] = text
+        # Capture the request at the model boundary, independently of a simulated rating.
+        model = Mock()
+        model.antwort.side_effect = TimeoutError
+        with self.assertRaises(TimeoutError):
+            evaluate({"snapshot": fixture, "rubric": rubric,
+                      "scenario_reference": cases["payout_missing"]}, model)
+        _, instruction, data = model.antwort.call_args.args
+        self.assertEqual([msg["text"] for msg in data["snapshot"]["messages"]], dialogue)
+        self.assertEqual(set(data), {"snapshot", "rubric"})
+        for hidden in ("Bankverbindung", "Formular", "bank_form_missing"):
+            self.assertNotIn(hidden.casefold(), (instruction + str(data)).casefold())
+
     def test_three_fixtures_resolve_original_quotes_and_differentiate_opportunity(self):
         rubric, cases = load_knowledge()
         expected = {

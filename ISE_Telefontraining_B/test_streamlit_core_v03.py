@@ -23,7 +23,7 @@ class CoreIntegrationTests(unittest.TestCase):
                         if len(calls) == 1:
                             raise TimeoutError()
                         return ExampleCustomerModel().antwort(role, prompt, data)
-                    self.assertEqual(data["scenario_reference"]["scenario_id"], scenario)
+                    self.assertNotIn("scenario_reference", data)
                     messages = data["snapshot"]["messages"]
                     criteria = [
                         {"criterion_id": criterion, "level": "Gezeigt", "rationale": "Beispielbeobachtung.",
