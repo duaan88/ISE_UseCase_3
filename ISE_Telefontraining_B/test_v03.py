@@ -35,6 +35,17 @@ class RecordingCustomer(ExampleCustomerModel):
         return super().antwort(role, prompt, data)
 
 
+class TransferRequestCustomer(RecordingCustomer):
+    def antwort(self, role, prompt, data):
+        self.calls.append((role, data))
+        if len(self.calls) == 1:
+            return json.dumps({"text": "Können Sie mich bitte weiterleiten?", "accepts_step": False})
+        return json.dumps({
+            "text": "Ich möchte mit jemandem sprechen, der mir helfen kann. Können Sie mich bitte weiterleiten?",
+            "accepts_step": False,
+        })
+
+
 def example_evaluation(evaluation_input):
     """Nachgebildete B-Funktion. Keine Bewertung durch A."""
     snapshot = evaluation_input["snapshot"]
@@ -96,6 +107,26 @@ class TextFlowTests(unittest.TestCase):
         self.assertNotIn("Petra", json.dumps(self.model.calls))
         reference = self.orchestrator.get_completed_snapshot(view["session_id"])
         self.assertEqual(reference.scenario_id, "missing_followup")
+
+    def test_customer_accepts_requested_transfer_without_switching_roles(self):
+        model = TransferRequestCustomer()
+        core = Orchestrator(CustomerAgent(model))
+        view = core.start_session(**START)
+        view = core.submit_turn(
+            view["session_id"], expected_version=view["version"], request_id="transfer-1",
+            text="Hallo Petra, das kann ich verstehen. Leider kann ich dir nicht weiter helfen",
+        )
+        view = core.submit_turn(
+            view["session_id"], expected_version=view["version"], request_id="transfer-2",
+            text="Okay, ich prüfe den Status, aber ich bin selbst ein neuer Mitarbeiter und weiß nicht ganz was ich tun soll.",
+        )
+        view = core.submit_turn(
+            view["session_id"], expected_version=view["version"], request_id="transfer-3",
+            text="Okay, ich leite Sie weiter.",
+        )
+        self.assertEqual(view["messages"][-1]["text"], "Ja, bitte verbinden Sie mich.")
+        self.assertEqual([role for role, _ in model.calls], ["Kunde", "Kunde"])
+        self.assertEqual(view["status"], "active")
 
     def test_hard_case_starts_unresolved_and_can_escalate(self):
         view = self.start(difficulty_preset="hard", training_mode="testing")
