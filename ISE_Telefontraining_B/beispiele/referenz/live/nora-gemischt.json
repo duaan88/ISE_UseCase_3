@@ -1,0 +1,68 @@
+{
+  "model": "alias-fast",
+  "attempt": 1,
+  "feedback": {
+    "rubric_version": "trauerfall-0.1",
+    "snapshot_version": 2,
+    "criteria": [
+      {
+        "criterion_id": "empathy",
+        "level": "Übungsbedarf",
+        "rationale": "Der Verlust wurde nicht anerkannt, es fehlt eine respektvolle Anteilnahme.",
+        "evidence": [
+          {
+            "message_id": "nora-gemischt-m002",
+            "quote": "Was würde Ihnen jetzt helfen?",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "clarification",
+        "level": "Gezeigt",
+        "rationale": "Durch die offene Frage wird behutsam nach dem gewünschten Unterstützungsbedarf gefragt.",
+        "evidence": [
+          {
+            "message_id": "nora-gemischt-m002",
+            "quote": "Was würde Ihnen jetzt helfen?",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "next_step",
+        "level": "Keine Gelegenheit",
+        "rationale": "Nach der bisherigen Kundenaussage gab es noch keinen konkreten Wunsch, auf den ein nächster Schritt folgen könnte.",
+        "evidence": []
+      }
+    ],
+    "strengths": [
+      {
+        "criterion_id": "clarification",
+        "text": "Stellt eine offene, wohlwollende Frage, um den Bedarf zu ermitteln.",
+        "evidence": [
+          {
+            "message_id": "nora-gemischt-m002",
+            "quote": "Was würde Ihnen jetzt helfen?",
+            "assisted": false
+          }
+        ]
+      }
+    ],
+    "improvements": [
+      {
+        "criterion_id": "empathy",
+        "text": "Fehlt eine einfühlsame Anerkennung des Trauerfalls.",
+        "evidence": [
+          {
+            "message_id": "nora-gemischt-m002",
+            "quote": "Was würde Ihnen jetzt helfen?",
+            "assisted": false
+          }
+        ]
+      }
+    ],
+    "critical_findings": [],
+    "next_practice": "Formulieren Sie zunächst eine einfühlsame Anteilnahme und bieten Sie anschließend an, eine kurze schriftliche Übersicht zu senden."
+  }
+}

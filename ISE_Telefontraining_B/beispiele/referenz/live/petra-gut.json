@@ -1,0 +1,84 @@
+{
+  "model": "alias-fast",
+  "attempt": 1,
+  "feedback": {
+    "rubric_version": "auszahlung-0.1",
+    "snapshot_version": 2,
+    "criteria": [
+      {
+        "criterion_id": "empathy",
+        "level": "Gezeigt",
+        "rationale": "Der Servicekraft wurde die finanzielle Belastung und Wartezeit explizit benannt („das ist belastend“).",
+        "evidence": [
+          {
+            "message_id": "petra-gut-m002",
+            "quote": "Drei Wochen warten und jetzt die Rechnung vor sich haben – das ist belastend. Was stand im letzten Brief?",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "clarification",
+        "level": "Gezeigt",
+        "rationale": "Es wurde nach dem Inhalt des letzten Briefes gefragt, um fehlende Informationen zu klären.",
+        "evidence": [
+          {
+            "message_id": "petra-gut-m002",
+            "quote": "Drei Wochen warten und jetzt die Rechnung vor sich haben – das ist belastend. Was stand im letzten Brief?",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "next_step",
+        "level": "Gezeigt",
+        "rationale": "Ein konkreter nächster Schritt („Ich sende Ihnen das Formular … melde mich morgen mit einem Zwischenstand“) wurde genannt und um Bestätigung gebeten.",
+        "evidence": [
+          {
+            "message_id": "petra-gut-m004",
+            "quote": "Ich sende Ihnen das Formular und melde mich morgen mit einem Zwischenstand. Einen Zahlungstermin habe ich noch nicht. Passt das für Sie?",
+            "assisted": false
+          }
+        ]
+      }
+    ],
+    "strengths": [
+      {
+        "criterion_id": "empathy",
+        "text": "Empathische Ansprache der Belastung des Kunden.",
+        "evidence": [
+          {
+            "message_id": "petra-gut-m002",
+            "quote": "Drei Wochen warten und jetzt die Rechnung vor sich haben – das ist belastend. Was stand im letzten Brief?",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "clarification",
+        "text": "Klärungsfrage zum fehlenden Formular gestellt.",
+        "evidence": [
+          {
+            "message_id": "petra-gut-m002",
+            "quote": "Drei Wochen warten und jetzt die Rechnung vor sich haben – das ist belastend. Was stand im letzten Brief?",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "next_step",
+        "text": "Klarer, realistisch formulierter nächster Schritt mit Rückmeldungsbitte.",
+        "evidence": [
+          {
+            "message_id": "petra-gut-m004",
+            "quote": "Ich sende Ihnen das Formular und melde mich morgen mit einem Zwischenstand. Einen Zahlungstermin habe ich noch nicht. Passt das für Sie?",
+            "assisted": false
+          }
+        ]
+      }
+    ],
+    "improvements": [],
+    "critical_findings": [],
+    "next_practice": null
+  }
+}

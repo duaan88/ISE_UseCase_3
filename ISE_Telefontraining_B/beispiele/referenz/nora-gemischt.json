@@ -1,0 +1,69 @@
+{
+  "scenario_id": "bereavement",
+  "snapshot_version": 2,
+  "end_reason": "user_finished",
+  "difficulty": {
+    "preset": "medium",
+    "emotional_intensity": 2,
+    "technical_complexity": 2,
+    "ambiguity": 2,
+    "conversational_dynamics": 2,
+    "information_load": 2
+  },
+  "messages": [
+    {
+      "id": "nora-gemischt-m001",
+      "role": "customer",
+      "turn": 0,
+      "text": "Hier ist Nora Beck. Mein Vater ist verstorben. Ich weiß nicht, wo ich anfangen soll.",
+      "assisted": false
+    },
+    {
+      "id": "nora-gemischt-m002",
+      "role": "trainee",
+      "turn": 1,
+      "text": "Was würde Ihnen jetzt helfen?",
+      "assisted": false
+    },
+    {
+      "id": "nora-gemischt-m003",
+      "role": "customer",
+      "turn": 1,
+      "text": "Eine kurze schriftliche Übersicht würde mir helfen. Am Telefon ist mir das gerade zu viel.",
+      "assisted": false
+    }
+  ],
+  "expected": {
+    "criteria": [
+      {
+        "criterion_id": "empathy",
+        "level": "Teilweise gezeigt",
+        "rationale": "Räumt dem Bedarf Platz ein, spricht den Verlust nicht an.",
+        "evidence": [
+          {
+            "message_id": "nora-gemischt-m002",
+            "quote": "Was würde Ihnen jetzt helfen?"
+          }
+        ]
+      },
+      {
+        "criterion_id": "clarification",
+        "level": "Gezeigt",
+        "rationale": "Offene, bedarfsbezogene Frage.",
+        "evidence": [
+          {
+            "message_id": "nora-gemischt-m002",
+            "quote": "Was würde Ihnen jetzt helfen?"
+          }
+        ]
+      },
+      {
+        "criterion_id": "next_step",
+        "level": "Keine Gelegenheit",
+        "rationale": "Das Gespräch endet unmittelbar nach Offenlegung des Wunschs.",
+        "evidence": []
+      }
+    ],
+    "critical_findings": []
+  }
+}

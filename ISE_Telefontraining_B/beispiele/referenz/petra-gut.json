@@ -1,0 +1,88 @@
+{
+  "scenario_id": "payout_missing",
+  "snapshot_version": 2,
+  "end_reason": "agreement",
+  "difficulty": {
+    "preset": "medium",
+    "emotional_intensity": 2,
+    "technical_complexity": 2,
+    "ambiguity": 2,
+    "conversational_dynamics": 2,
+    "information_load": 2
+  },
+  "messages": [
+    {
+      "id": "petra-gut-m001",
+      "role": "customer",
+      "turn": 0,
+      "text": "Hier ist Petra Lindner. Ich warte seit drei Wochen auf mein Geld und muss eine Rechnung bezahlen.",
+      "assisted": false
+    },
+    {
+      "id": "petra-gut-m002",
+      "role": "trainee",
+      "turn": 1,
+      "text": "Drei Wochen warten und jetzt die Rechnung vor sich haben – das ist belastend. Was stand im letzten Brief?",
+      "assisted": false
+    },
+    {
+      "id": "petra-gut-m003",
+      "role": "customer",
+      "turn": 1,
+      "text": "Im letzten Brief stand, dass das unterschriebene Formular zur Bankverbindung noch fehlt.",
+      "assisted": false
+    },
+    {
+      "id": "petra-gut-m004",
+      "role": "trainee",
+      "turn": 2,
+      "text": "Ich sende Ihnen das Formular und melde mich morgen mit einem Zwischenstand. Einen Zahlungstermin habe ich noch nicht. Passt das für Sie?",
+      "assisted": false
+    },
+    {
+      "id": "petra-gut-m005",
+      "role": "customer",
+      "turn": 2,
+      "text": "Ja, danke. Dann weiß ich, worauf ich warten kann.",
+      "assisted": false
+    }
+  ],
+  "expected": {
+    "criteria": [
+      {
+        "criterion_id": "empathy",
+        "level": "Gezeigt",
+        "rationale": "Wartezeit und finanzielle Belastung konkret gespiegelt.",
+        "evidence": [
+          {
+            "message_id": "petra-gut-m002",
+            "quote": "Drei Wochen warten und jetzt die Rechnung vor sich haben – das ist belastend. Was stand im letzten Brief?"
+          }
+        ]
+      },
+      {
+        "criterion_id": "clarification",
+        "level": "Gezeigt",
+        "rationale": "Fragt nach der letzten Mitteilung.",
+        "evidence": [
+          {
+            "message_id": "petra-gut-m002",
+            "quote": "Drei Wochen warten und jetzt die Rechnung vor sich haben – das ist belastend. Was stand im letzten Brief?"
+          }
+        ]
+      },
+      {
+        "criterion_id": "next_step",
+        "level": "Gezeigt",
+        "rationale": "Eigene Handlung, Zeitpunkt und offene Auszahlung klar getrennt.",
+        "evidence": [
+          {
+            "message_id": "petra-gut-m004",
+            "quote": "Ich sende Ihnen das Formular und melde mich morgen mit einem Zwischenstand. Einen Zahlungstermin habe ich noch nicht. Passt das für Sie?"
+          }
+        ]
+      }
+    ],
+    "critical_findings": []
+  }
+}

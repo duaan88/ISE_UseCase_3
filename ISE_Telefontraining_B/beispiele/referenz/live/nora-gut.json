@@ -1,0 +1,84 @@
+{
+  "model": "alias-fast",
+  "attempt": 2,
+  "feedback": {
+    "rubric_version": "trauerfall-0.1",
+    "snapshot_version": 3,
+    "criteria": [
+      {
+        "criterion_id": "empathy",
+        "level": "Gezeigt",
+        "rationale": "Der Servicekraft drückte ihr Beileid aus und zeigte damit respektvollen Umgang mit dem Verlust.",
+        "evidence": [
+          {
+            "message_id": "nora-gut-m002",
+            "quote": "Mein Beileid zum Tod Ihres Vaters. Wir können uns Zeit lassen. Was würde Ihnen gerade helfen?",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "clarification",
+        "level": "Gezeigt",
+        "rationale": "Sie fragte behutsam, welche Unterstützung der Kunde gerade wünscht, und klärte damit den konkreten Bedarf.",
+        "evidence": [
+          {
+            "message_id": "nora-gut-m002",
+            "quote": "Mein Beileid zum Tod Ihres Vaters. Wir können uns Zeit lassen. Was würde Ihnen gerade helfen?",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "next_step",
+        "level": "Gezeigt",
+        "rationale": "Ein konkreter nächster Schritt – das Zusenden einer kurzen schriftlichen Übersicht – wurde angeboten und das Einverständnis des Kunden erfragt.",
+        "evidence": [
+          {
+            "message_id": "nora-gut-m004",
+            "quote": "Ich schicke Ihnen eine kurze Übersicht. Möchten Sie die erst in Ruhe lesen und sich dann melden, wenn Sie soweit sind?",
+            "assisted": false
+          }
+        ]
+      }
+    ],
+    "strengths": [
+      {
+        "criterion_id": "empathy",
+        "text": "Einfühlsame Kondolenzformulierung und Angebot, sich Zeit zu nehmen.",
+        "evidence": [
+          {
+            "message_id": "nora-gut-m002",
+            "quote": "Mein Beileid zum Tod Ihres Vaters. Wir können uns Zeit lassen. Was würde Ihnen gerade helfen?",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "clarification",
+        "text": "Gezielte Frage nach dem gewünschten Hilfestellungsformat.",
+        "evidence": [
+          {
+            "message_id": "nora-gut-m002",
+            "quote": "Mein Beileid zum Tod Ihres Vaters. Wir können uns Zeit lassen. Was würde Ihnen gerade helfen?",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "next_step",
+        "text": "Klares Angebot, eine schriftliche Übersicht zu senden, und Bitte um Zustimmung.",
+        "evidence": [
+          {
+            "message_id": "nora-gut-m004",
+            "quote": "Ich schicke Ihnen eine kurze Übersicht. Möchten Sie die erst in Ruhe lesen und sich dann melden, wenn Sie soweit sind?",
+            "assisted": false
+          }
+        ]
+      }
+    ],
+    "improvements": [],
+    "critical_findings": [],
+    "next_practice": "Nach dem Versand der Übersicht eine Bestätigungsmail senden und Kontaktmöglichkeiten für Rückfragen anbieten."
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "model": "alias-fast",
+  "attempt": 1,
+  "feedback": {
+    "rubric_version": "auszahlung-0.1",
+    "snapshot_version": 3,
+    "criteria": [
+      {
+        "criterion_id": "empathy",
+        "level": "Teilweise gezeigt",
+        "rationale": "Der Service-Mitarbeiter erkennt den Ärger des Kunden, nennt jedoch nicht konkret die Wartezeit von drei Wochen und die finanzielle Belastung durch die offene Rechnung.",
+        "evidence": [
+          {
+            "message_id": "petra-gemischt-m002",
+            "quote": "Ich verstehe Ihren Ärger. Was stand im letzten Brief?",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "clarification",
+        "level": "Teilweise gezeigt",
+        "rationale": "Es wird nach dem Inhalt des letzten Schreibens gefragt, aber es erfolgt keine Trennung zwischen bereits bekannten und noch offenen Informationen.",
+        "evidence": [
+          {
+            "message_id": "petra-gemischt-m002",
+            "quote": "Ich verstehe Ihren Ärger. Was stand im letzten Brief?",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "next_step",
+        "level": "Übungsbedarf",
+        "rationale": "Die Weiterleitung wird angekündigt, jedoch ohne Angabe von Zuständigkeit, konkretem Vorgehen oder Rückmeldezeitpunkt – damit fehlt eine realistische Handlungszusage.",
+        "evidence": [
+          {
+            "message_id": "petra-gemischt-m004",
+            "quote": "Ich leite Sie weiter.",
+            "assisted": false
+          }
+        ]
+      }
+    ],
+    "strengths": [
+      {
+        "criterion_id": "empathy",
+        "text": "Der Mitarbeiter zeigt erste empathische Reaktion, indem er den Ärger des Kunden erkennt.",
+        "evidence": [
+          {
+            "message_id": "petra-gemischt-m002",
+            "quote": "Ich verstehe Ihren Ärger. Was stand im letzten Brief?",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "clarification",
+        "text": "Er fragt gezielt nach dem Inhalt des letzten Briefes, um fehlende Informationen zu erhalten.",
+        "evidence": [
+          {
+            "message_id": "petra-gemischt-m002",
+            "quote": "Ich verstehe Ihren Ärger. Was stand im letzten Brief?",
+            "assisted": false
+          }
+        ]
+      }
+    ],
+    "improvements": [
+      {
+        "criterion_id": "empathy",
+        "text": "Finanzielle Belastung und die dreiwöchige Wartezeit konkret benennen (z. B. „Ich sehe, dass Sie seit drei Wochen auf die Auszahlung warten und dadurch Ihre Rechnung nicht begleichen können – das ist ärgerlich.“).",
+        "evidence": [
+          {
+            "message_id": "petra-gemischt-m002",
+            "quote": "Ich verstehe Ihren Ärger. Was stand im letzten Brief?",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "clarification",
+        "text": "Offene von bestätigten Informationen trennen und ggf. nach fehlenden Unterlagen (z. B. Formular) konkret fragen.",
+        "evidence": [
+          {
+            "message_id": "petra-gemischt-m002",
+            "quote": "Ich verstehe Ihren Ärger. Was stand im letzten Brief?",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "next_step",
+        "text": "Eine klare Handlung vereinbaren: Zuständige Abteilung nennen, konkretes Vorgehen (z. B. Formular anfordern) und einen konkreten Rückmeldezeitpunkt nennen.",
+        "evidence": [
+          {
+            "message_id": "petra-gemischt-m004",
+            "quote": "Ich leite Sie weiter.",
+            "assisted": false
+          }
+        ]
+      }
+    ],
+    "critical_findings": [],
+    "next_practice": "Formuliere eine empathische Antwort, die Wartezeit und finanzielle Belastung nennt, und biete anschließend einen konkreten nächsten Schritt mit Zuständigkeit und klarer Rückmeldefrist an."
+  }
+}

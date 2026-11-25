@@ -1,0 +1,88 @@
+{
+  "scenario_id": "bereavement",
+  "snapshot_version": 3,
+  "end_reason": "user_finished",
+  "difficulty": {
+    "preset": "medium",
+    "emotional_intensity": 2,
+    "technical_complexity": 2,
+    "ambiguity": 2,
+    "conversational_dynamics": 2,
+    "information_load": 2
+  },
+  "messages": [
+    {
+      "id": "nora-problematisch-m001",
+      "role": "customer",
+      "turn": 0,
+      "text": "Hier ist Nora Beck. Mein Vater ist verstorben. Ich weiß nicht, wo ich anfangen soll.",
+      "assisted": false
+    },
+    {
+      "id": "nora-problematisch-m002",
+      "role": "trainee",
+      "turn": 1,
+      "text": "Machen wir schnell. Welche Verträge hatte Ihr Vater genau?",
+      "assisted": false
+    },
+    {
+      "id": "nora-problematisch-m003",
+      "role": "customer",
+      "turn": 1,
+      "text": "Das weiß ich gerade nicht. Eine kurze schriftliche Übersicht würde mir helfen.",
+      "assisted": false
+    },
+    {
+      "id": "nora-problematisch-m004",
+      "role": "trainee",
+      "turn": 2,
+      "text": "Dafür haben wir keine Zeit. Ich leite Sie weiter.",
+      "assisted": false
+    },
+    {
+      "id": "nora-problematisch-m005",
+      "role": "customer",
+      "turn": 2,
+      "text": "Ich möchte das gerade nicht noch einmal am Telefon erzählen.",
+      "assisted": false
+    }
+  ],
+  "expected": {
+    "criteria": [
+      {
+        "criterion_id": "empathy",
+        "level": "Übungsbedarf",
+        "rationale": "Erzeugt Zeitdruck unmittelbar nach der Verlustmeldung.",
+        "evidence": [
+          {
+            "message_id": "nora-problematisch-m002",
+            "quote": "Machen wir schnell. Welche Verträge hatte Ihr Vater genau?"
+          }
+        ]
+      },
+      {
+        "criterion_id": "clarification",
+        "level": "Übungsbedarf",
+        "rationale": "Fragt Vertragsdetails ab, ohne Noras Bedarf zu klären.",
+        "evidence": [
+          {
+            "message_id": "nora-problematisch-m002",
+            "quote": "Machen wir schnell. Welche Verträge hatte Ihr Vater genau?"
+          }
+        ]
+      },
+      {
+        "criterion_id": "next_step",
+        "level": "Übungsbedarf",
+        "rationale": "Übergeht den schriftlichen Wunsch und fragt nicht nach Einverständnis.",
+        "evidence": [
+          {
+            "message_id": "nora-problematisch-m004",
+            "quote": "Dafür haben wir keine Zeit. Ich leite Sie weiter."
+          }
+        ]
+      }
+    ],
+    "critical_findings": []
+  }
+}

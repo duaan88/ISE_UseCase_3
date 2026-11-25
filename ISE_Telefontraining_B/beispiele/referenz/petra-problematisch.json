@@ -1,0 +1,94 @@
+{
+  "scenario_id": "payout_missing",
+  "snapshot_version": 3,
+  "end_reason": "user_finished",
+  "difficulty": {
+    "preset": "medium",
+    "emotional_intensity": 2,
+    "technical_complexity": 2,
+    "ambiguity": 2,
+    "conversational_dynamics": 2,
+    "information_load": 2
+  },
+  "messages": [
+    {
+      "id": "petra-problematisch-m001",
+      "role": "customer",
+      "turn": 0,
+      "text": "Hier ist Petra Lindner. Ich warte seit drei Wochen auf mein Geld und muss eine Rechnung bezahlen.",
+      "assisted": false
+    },
+    {
+      "id": "petra-problematisch-m002",
+      "role": "trainee",
+      "turn": 1,
+      "text": "Andere warten auch. Was stand im letzten Brief?",
+      "assisted": false
+    },
+    {
+      "id": "petra-problematisch-m003",
+      "role": "customer",
+      "turn": 1,
+      "text": "Im letzten Brief stand, dass das unterschriebene Formular zur Bankverbindung noch fehlt.",
+      "assisted": false
+    },
+    {
+      "id": "petra-problematisch-m004",
+      "role": "trainee",
+      "turn": 2,
+      "text": "Das Geld ist morgen garantiert da.",
+      "assisted": false
+    },
+    {
+      "id": "petra-problematisch-m005",
+      "role": "customer",
+      "turn": 2,
+      "text": "Wie können Sie das wissen, wenn das Formular noch fehlt?",
+      "assisted": false
+    }
+  ],
+  "expected": {
+    "criteria": [
+      {
+        "criterion_id": "empathy",
+        "level": "Übungsbedarf",
+        "rationale": "Relativiert die Belastung.",
+        "evidence": [
+          {
+            "message_id": "petra-problematisch-m002",
+            "quote": "Andere warten auch. Was stand im letzten Brief?"
+          }
+        ]
+      },
+      {
+        "criterion_id": "clarification",
+        "level": "Gezeigt",
+        "rationale": "Trotz des Tons ist die Nachfrage zum Brief zielführend.",
+        "evidence": [
+          {
+            "message_id": "petra-problematisch-m002",
+            "quote": "Andere warten auch. Was stand im letzten Brief?"
+          }
+        ]
+      },
+      {
+        "criterion_id": "next_step",
+        "level": "Übungsbedarf",
+        "rationale": "Garantiert Auszahlung trotz offenem Termin und fehlendem Formular.",
+        "evidence": [
+          {
+            "message_id": "petra-problematisch-m004",
+            "quote": "Das Geld ist morgen garantiert da."
+          }
+        ]
+      }
+    ],
+    "critical_findings": [
+      {
+        "rule_id": "auszahlung_termin_offen",
+        "message_id": "petra-problematisch-m004",
+        "quote": "Das Geld ist morgen garantiert da."
+      }
+    ]
+  }
+}

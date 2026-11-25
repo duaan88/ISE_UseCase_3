@@ -1,0 +1,88 @@
+{
+  "scenario_id": "bereavement",
+  "snapshot_version": 3,
+  "end_reason": "user_finished",
+  "difficulty": {
+    "preset": "medium",
+    "emotional_intensity": 2,
+    "technical_complexity": 2,
+    "ambiguity": 2,
+    "conversational_dynamics": 2,
+    "information_load": 2
+  },
+  "messages": [
+    {
+      "id": "nora-gut-m001",
+      "role": "customer",
+      "turn": 0,
+      "text": "Hier ist Nora Beck. Mein Vater ist verstorben. Ich weiß nicht, wo ich anfangen soll.",
+      "assisted": false
+    },
+    {
+      "id": "nora-gut-m002",
+      "role": "trainee",
+      "turn": 1,
+      "text": "Mein Beileid zum Tod Ihres Vaters. Wir können uns Zeit lassen. Was würde Ihnen gerade helfen?",
+      "assisted": false
+    },
+    {
+      "id": "nora-gut-m003",
+      "role": "customer",
+      "turn": 1,
+      "text": "Eine kurze schriftliche Übersicht würde mir helfen. Am Telefon ist mir das gerade zu viel.",
+      "assisted": false
+    },
+    {
+      "id": "nora-gut-m004",
+      "role": "trainee",
+      "turn": 2,
+      "text": "Ich schicke Ihnen eine kurze Übersicht. Möchten Sie die erst in Ruhe lesen und sich dann melden, wenn Sie soweit sind?",
+      "assisted": false
+    },
+    {
+      "id": "nora-gut-m005",
+      "role": "customer",
+      "turn": 2,
+      "text": "Ja, bitte. Ich möchte mich danach selbst melden.",
+      "assisted": false
+    }
+  ],
+  "expected": {
+    "criteria": [
+      {
+        "criterion_id": "empathy",
+        "level": "Gezeigt",
+        "rationale": "Anerkennt den Verlust und lässt Zeit.",
+        "evidence": [
+          {
+            "message_id": "nora-gut-m002",
+            "quote": "Mein Beileid zum Tod Ihres Vaters. Wir können uns Zeit lassen. Was würde Ihnen gerade helfen?"
+          }
+        ]
+      },
+      {
+        "criterion_id": "clarification",
+        "level": "Gezeigt",
+        "rationale": "Fragt offen nach gewünschter Unterstützung.",
+        "evidence": [
+          {
+            "message_id": "nora-gut-m002",
+            "quote": "Mein Beileid zum Tod Ihres Vaters. Wir können uns Zeit lassen. Was würde Ihnen gerade helfen?"
+          }
+        ]
+      },
+      {
+        "criterion_id": "next_step",
+        "level": "Gezeigt",
+        "rationale": "Greift den schriftlichen Wunsch auf und lässt Nora über weiteren Kontakt entscheiden.",
+        "evidence": [
+          {
+            "message_id": "nora-gut-m004",
+            "quote": "Ich schicke Ihnen eine kurze Übersicht. Möchten Sie die erst in Ruhe lesen und sich dann melden, wenn Sie soweit sind?"
+          }
+        ]
+      }
+    ],
+    "critical_findings": []
+  }
+}
