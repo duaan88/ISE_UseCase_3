@@ -1,0 +1,107 @@
+{
+  "run": 4,
+  "model": "alias-fast",
+  "errors": [
+    "Unbelegte Zeitspanne in der Kriterienbegründung."
+  ],
+  "id_map": {
+    "m001": "petra-gemischt-m001",
+    "m002": "petra-gemischt-m002",
+    "m003": "petra-gemischt-m003",
+    "m004": "petra-gemischt-m004",
+    "m005": "petra-gemischt-m005"
+  },
+  "critical_match": true,
+  "feedback": {
+    "rubric_version": "auszahlung-0.2",
+    "snapshot_version": 3,
+    "criteria": [
+      {
+        "criterion_id": "empathy",
+        "level": "Teilweise gezeigt",
+        "rationale": "Der Service-Mitarbeiter erkennt den Ärger des Kunden, nennt jedoch weder die finanzielle Belastung noch die lange Wartezeit konkret.",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Ich verstehe Ihren Ärger. Was stand im letzten Brief?",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "clarification",
+        "level": "Gezeigt",
+        "rationale": "Durch die Frage nach dem Inhalt des letzten Briefes wird fehlende Information gezielt erfragt und offene von bestätigten Informationen getrennt.",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Ich verstehe Ihren Ärger. Was stand im letzten Brief?",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "next_step",
+        "level": "Teilweise gezeigt",
+        "rationale": "Eine Weiterleitung wird angeboten, jedoch ohne Angabe von Zielabteilung oder Rückmeldezeitpunkt, wodurch der nächste Schritt nicht vollständig klar ist.",
+        "evidence": [
+          {
+            "message_id": "m004",
+            "quote": "Ich leite Sie weiter.",
+            "assisted": false
+          }
+        ]
+      }
+    ],
+    "strengths": [
+      {
+        "criterion_id": "clarification",
+        "text": "Gezielte Nachfrage zum fehlenden Briefinhalt ermittelt die noch offene Information.",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Ich verstehe Ihren Ärger. Was stand im letzten Brief?",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "next_step",
+        "text": "Ein Weiterleitungsvorschlag wird gemacht.",
+        "evidence": [
+          {
+            "message_id": "m004",
+            "quote": "Ich leite Sie weiter.",
+            "assisted": false
+          }
+        ]
+      }
+    ],
+    "improvements": [
+      {
+        "criterion_id": "empathy",
+        "text": "Finanzielle Belastung und die lange Wartezeit konkret benennen.",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Ich verstehe Ihren Ärger. Was stand im letzten Brief?",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "next_step",
+        "text": "Ziel der Weiterleitung und einen realistischen Rückmeldezeitpunkt nennen.",
+        "evidence": [
+          {
+            "message_id": "m004",
+            "quote": "Ich leite Sie weiter.",
+            "assisted": false
+          }
+        ]
+      }
+    ],
+    "critical_findings": [],
+    "next_practice": "Formulieren Sie eine konkrete Weiterleitung inkl. zuständiger Abteilung und erwarteten Rückmeldezeitpunkt."
+  }
+}

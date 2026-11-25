@@ -1,0 +1,98 @@
+{
+  "run": 2,
+  "model": "alias-fast",
+  "errors": [],
+  "id_map": {
+    "m001": "nora-problematisch-m001",
+    "m002": "nora-problematisch-m002",
+    "m003": "nora-problematisch-m003",
+    "m004": "nora-problematisch-m004",
+    "m005": "nora-problematisch-m005"
+  },
+  "critical_match": true,
+  "feedback": {
+    "rubric_version": "trauerfall-0.2",
+    "snapshot_version": 3,
+    "criteria": [
+      {
+        "criterion_id": "empathy",
+        "level": "Übungsbedarf",
+        "rationale": "Der Service stellt den Verlust nicht fest und zeigt keinen respektvollen Umgang mit der Trauer.",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Machen wir schnell. Welche Verträge hatte Ihr Vater genau?",
+            "assisted": false
+          },
+          {
+            "message_id": "m004",
+            "quote": "Dafür haben wir keine Zeit. Ich leite Sie weiter.",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "clarification",
+        "level": "Übungsbedarf",
+        "rationale": "Statt behutsam nach dem gewünschten Unterstützungsbedarf zu fragen, werden sofort Vertragsdetails erfragt.",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Machen wir schnell. Welche Verträge hatte Ihr Vater genau?",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "next_step",
+        "level": "Übungsbedarf",
+        "rationale": "Der Wunsch nach einer schriftlichen Übersicht wird nicht aufgegriffen; es wird lediglich weitergeleitet, ohne ein passendes Angebot zu machen.",
+        "evidence": [
+          {
+            "message_id": "m004",
+            "quote": "Dafür haben wir keine Zeit. Ich leite Sie weiter.",
+            "assisted": false
+          }
+        ]
+      }
+    ],
+    "strengths": [],
+    "improvements": [
+      {
+        "criterion_id": "empathy",
+        "text": "Den Verlust anerkennen und eine kurze Kondolenz formulieren, bevor weitergefragt wird.",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Machen wir schnell. Welche Verträge hatte Ihr Vater genau?",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "clarification",
+        "text": "Offene, behutsame Frage nach der gewünschten Unterstützung stellen (z. B. schriftliche Übersicht).",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Machen wir schnell. Welche Verträge hatte Ihr Vater genau?",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "next_step",
+        "text": "Dem Kunden das Angebot einer schriftlichen Vertragsübersicht machen und um Einverständnis bitten.",
+        "evidence": [
+          {
+            "message_id": "m004",
+            "quote": "Dafür haben wir keine Zeit. Ich leite Sie weiter.",
+            "assisted": false
+          }
+        ]
+      }
+    ],
+    "critical_findings": [],
+    "next_practice": "Kondolenz aussprechen, nach dem Wunsch nach schriftlicher Übersicht fragen und dieses Angebot konkret machen."
+  }
+}

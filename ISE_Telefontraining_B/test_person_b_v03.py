@@ -16,6 +16,38 @@ except ImportError:
 
 
 class EvaluationTests(unittest.TestCase):
+    def test_payout_duration_in_rationale_must_be_grounded(self):
+        snapshot = load_fixture("regular")
+        rubric, _ = load_knowledge(scenario_id="payout_missing")
+        raw = fixture_model_output("regular")
+        model = Mock()
+        for duration in ("drei Tage", "dreitägige", "dreifache"):
+            with self.subTest(duration=duration):
+                raw["criteria"][0]["rationale"] = f"Die Wartezeit ({duration}) wird anerkannt."
+                model.antwort.return_value = json.dumps(raw)
+                with self.assertRaisesRegex(InvalidEvaluation, "Zeitspanne"):
+                    evaluate(dict(snapshot=snapshot, rubric=rubric), model)
+        raw["criteria"][0]["rationale"] = "Die Wartezeit von drei Wochen wird anerkannt."
+        model.antwort.return_value = json.dumps(raw)
+        evaluate(dict(snapshot=snapshot, rubric=rubric), model)
+
+    def test_nora_first_disclosure_at_end_excludes_next_step_from_model_rating(self):
+        path = Path(__file__).parent / "beispiele/referenz/nora-gemischt.json"
+        snapshot = json.loads(path.read_text(encoding="utf-8"))
+        rubric, _ = load_knowledge(scenario_id="bereavement")
+        rows = [{"criterion_id": key, "level": "Gezeigt", "rationale": "Offene Nachfrage.",
+                 "evidence_ids": [snapshot["messages"][1]["id"]]} for key in ("empathy", "clarification")]
+        model = Mock()
+        model.antwort.return_value = json.dumps(dict(criteria=rows, strengths=[], improvements=[], next_practice=None))
+        report = evaluate(dict(snapshot=snapshot, rubric=rubric), model)
+        self.assertNotIn("next_step", model.antwort.call_args.args[2]["rubric"]["criteria"])
+        self.assertEqual(report["criteria"][-1]["level"], "Keine Gelegenheit")
+        self.assertEqual(report["criteria"][-1]["evidence"], [])
+        snapshot["messages"].append({**snapshot["messages"][1], "id": "another", "text": "Ich leite Sie weiter."})
+        with self.assertRaisesRegex(InvalidEvaluation, "genau einmal"):
+            evaluate(dict(snapshot=snapshot, rubric=rubric), model)
+        self.assertIn("next_step", model.antwort.call_args.args[2]["rubric"]["criteria"])
+
     def test_critical_payout_finding_uses_original_sentence_and_service_role(self):
         rubric, _ = load_knowledge()
         snapshot = load_fixture("regular")

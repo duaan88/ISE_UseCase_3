@@ -1,0 +1,105 @@
+{
+  "run": 2,
+  "model": "alias-fast",
+  "errors": [],
+  "id_map": {
+    "m001": "nora-gut-m001",
+    "m002": "nora-gut-m002",
+    "m003": "nora-gut-m003",
+    "m004": "nora-gut-m004",
+    "m005": "nora-gut-m005"
+  },
+  "critical_match": true,
+  "feedback": {
+    "rubric_version": "trauerfall-0.2",
+    "snapshot_version": 3,
+    "criteria": [
+      {
+        "criterion_id": "empathy",
+        "level": "Gezeigt",
+        "rationale": "Der Service beginnt mit einer ausdrücklichen Kondolenz und bietet dem Kunden Zeit, was den Verlust respektvoll anerkennt.",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Mein Beileid zum Tod Ihres Vaters. Wir können uns Zeit lassen. Was würde Ihnen gerade helfen?",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "clarification",
+        "level": "Gezeigt",
+        "rationale": "Es wird behutsam erfragt, welche Unterstützung dem Kunden aktuell hilft („Was würde Ihnen gerade helfen?“).",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Mein Beileid zum Tod Ihres Vaters. Wir können uns Zeit lassen. Was würde Ihnen gerade helfen?",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "next_step",
+        "level": "Gezeigt",
+        "rationale": "Ein konkreter, überschaubarer nächster Schritt wird angeboten (kurze schriftliche Übersicht) und das Einverständnis erfragt.",
+        "evidence": [
+          {
+            "message_id": "m004",
+            "quote": "Ich schicke Ihnen eine kurze Übersicht. Möchten Sie die erst in Ruhe lesen und sich dann melden, wenn Sie soweit sind?",
+            "assisted": false
+          }
+        ]
+      }
+    ],
+    "strengths": [
+      {
+        "criterion_id": "empathy",
+        "text": "Klare, einfühlsame Verlustäußerung zu Beginn des Gesprächs.",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Mein Beileid zum Tod Ihres Vaters. Wir können uns Zeit lassen. Was würde Ihnen gerade helfen?",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "clarification",
+        "text": "Offene Frage nach dem konkreten Bedarf des Kunden gestellt.",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Mein Beileid zum Tod Ihres Vaters. Wir können uns Zeit lassen. Was würde Ihnen gerade helfen?",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "next_step",
+        "text": "Passendes Angebot einer schriftlichen Übersicht mit Zustimmung des Kunden.",
+        "evidence": [
+          {
+            "message_id": "m004",
+            "quote": "Ich schicke Ihnen eine kurze Übersicht. Möchten Sie die erst in Ruhe lesen und sich dann melden, wenn Sie soweit sind?",
+            "assisted": false
+          }
+        ]
+      }
+    ],
+    "improvements": [
+      {
+        "criterion_id": "empathy",
+        "text": "Empathische Anerkennung in jedem Beitrag wiederholen, z. B. auch beim Angebot der Übersicht.",
+        "evidence": [
+          {
+            "message_id": "m004",
+            "quote": "Ich schicke Ihnen eine kurze Übersicht. Möchten Sie die erst in Ruhe lesen und sich dann melden, wenn Sie soweit sind?",
+            "assisted": false
+          }
+        ]
+      }
+    ],
+    "critical_findings": [],
+    "next_practice": "Formulieren Sie in jedem Servicebeitrag eine kurze, empathische Anerkennung des Verlustes, bevor Sie ein Angebot machen."
+  }
+}

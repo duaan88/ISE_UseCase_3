@@ -5,6 +5,7 @@ from pathlib import Path
 import re
 
 from training import _zusage_beleg
+from scenarios_v03 import SCENARIOS
 
 KNOWLEDGE_FILE = Path(__file__).with_name("wissen") / "synthetisch_v03.json"
 LEVELS = ("Gezeigt", "Teilweise gezeigt", "Übungsbedarf", "Keine Gelegenheit")
@@ -138,13 +139,30 @@ def evaluate(evaluation_input, model):
     """model.antwort entspricht dem vorhandenen Blablador-Adapter."""
     snapshot = evaluation_input["snapshot"]
     rubric = evaluation_input["rubric"]
+    messages = snapshot["messages"]
+    instruction = INSTRUCTION
+    model_rubric = dict(rubric)
+    # Die Engine setzt bei der ersten Offenlegung den kanonischen Fallhinweis ein.
+    clue = SCENARIOS["bereavement"].card.hinweis
+    first_disclosure = next((i for i, msg in enumerate(messages)
+                             if msg["role"] == "customer" and clue in msg["text"]), None)
+    no_reply = (snapshot["scenario_id"] == "bereavement" and first_disclosure is not None
+                and not any(m["role"] == "trainee" for m in messages[first_disclosure + 1:]))
+    if no_reply:
+        model_rubric["criteria"] = {k: v for k, v in rubric["criteria"].items() if k != "next_step"}
+        instruction += ("\nDie Kundin nennt ihren Unterstützungswunsch erst am Ende. Danach gab es "
+                        "keinen Servicebeitrag. Die Anwendung bewertet next_step selbst. Lass dieses "
+                        "Kriterium in allen Listen aus und unterstelle keine versäumte Handlung.")
+    if snapshot["scenario_id"] == "payout_missing":
+        instruction += ("\nBeschreibe die Belastung als Wartezeit. Verzichte in deinen Begründungen "
+                        "auf bezifferte oder umgerechnete Zeitspannen. Originalzitate ergänzt die Anwendung.")
     # Die interne Fallreferenz enthält auch ungelüftete Ursachen und Musterlösungen.
     # Offenlegungen erscheinen bereits an der richtigen Stelle in den Nachrichten.
     context = {
         "snapshot": {key: snapshot[key] for key in ("difficulty", "end_reason", "messages")},
-        "rubric": {**rubric, "levels": list(LEVELS)},
+        "rubric": {**model_rubric, "levels": list(LEVELS)},
     }
-    answer = model.antwort("Bewertung", INSTRUCTION, context)
+    answer = model.antwort("Bewertung", instruction, context)
     if not isinstance(answer, str):
         raise InvalidEvaluation("Die Bewertung ist kein Text.")
     answer = answer.strip()
@@ -153,4 +171,19 @@ def evaluate(evaluation_input, model):
         raw = json.loads(fenced.group(1) if fenced else answer)
     except ValueError as exc:
         raise InvalidEvaluation("Die Bewertung ist kein gültiges JSON.") from exc
-    return validate_feedback(raw, snapshot, rubric)
+    report = validate_feedback(raw, snapshot, model_rubric)
+    if no_reply:
+        report["criteria"].append({
+            "criterion_id": "next_step", "level": "Keine Gelegenheit",
+            "rationale": "Die Kundin äußerte den Wunsch nach schriftlicher Orientierung erst im letzten "
+                         "Kundenbeitrag. Danach hatte die Servicekraft keine Gelegenheit zu antworten.",
+            "evidence": [],
+        })
+    if snapshot["scenario_id"] == "payout_missing":
+        dialog = " ".join(m["text"] for m in messages).casefold()
+        # Modellprosa darf eine bezifferte Dauer nur im Wortlaut des Dialogs übernehmen.
+        duration = r"\b(?:\d+|ein(?:e[nrm]?)?|zwei|drei|vier|fünf|sechs|sieben|acht|neun|zehn)[\s‑-]*(?:(?:tag|woche|monat|stunde|jahr)(?:e|en|n)?\b|(?:tägig|wöchig|monatig|jährig|stündig|fach)\w*)"
+        for row in report["criteria"]:
+            if any(m[0] not in dialog for m in re.finditer(duration, row["rationale"].casefold())):
+                raise InvalidEvaluation("Unbelegte Zeitspanne in der Kriterienbegründung.")
+    return report

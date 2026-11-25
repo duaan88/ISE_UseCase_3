@@ -1,0 +1,75 @@
+{
+  "run": 1,
+  "model": "alias-fast",
+  "errors": [],
+  "id_map": {
+    "m001": "nora-gemischt-m001",
+    "m002": "nora-gemischt-m002",
+    "m003": "nora-gemischt-m003"
+  },
+  "critical_match": true,
+  "feedback": {
+    "rubric_version": "trauerfall-0.2",
+    "snapshot_version": 2,
+    "criteria": [
+      {
+        "criterion_id": "empathy",
+        "level": "Teilweise gezeigt",
+        "rationale": "Keine ausdrückliche Anerkennung des Verlusts, nur offene Frage nach Hilfe",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Was würde Ihnen jetzt helfen?",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "clarification",
+        "level": "Gezeigt",
+        "rationale": "Offene Frage nach gewünschter Unterstützung gestellt",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Was würde Ihnen jetzt helfen?",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "next_step",
+        "level": "Keine Gelegenheit",
+        "rationale": "Die Kundin äußerte den Wunsch nach schriftlicher Orientierung erst im letzten Kundenbeitrag. Danach hatte die Servicekraft keine Gelegenheit zu antworten.",
+        "evidence": []
+      }
+    ],
+    "strengths": [
+      {
+        "criterion_id": "clarification",
+        "text": "Offene Frage nach Unterstützung gestellt",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Was würde Ihnen jetzt helfen?",
+            "assisted": false
+          }
+        ]
+      }
+    ],
+    "improvements": [
+      {
+        "criterion_id": "empathy",
+        "text": "Verlust ausdrücklich anerkennen und Anteilnahme zeigen",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Was würde Ihnen jetzt helfen?",
+            "assisted": false
+          }
+        ]
+      }
+    ],
+    "critical_findings": [],
+    "next_practice": null
+  }
+}

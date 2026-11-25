@@ -1,0 +1,75 @@
+{
+  "run": 2,
+  "model": "alias-fast",
+  "errors": [],
+  "id_map": {
+    "m001": "nora-gemischt-m001",
+    "m002": "nora-gemischt-m002",
+    "m003": "nora-gemischt-m003"
+  },
+  "critical_match": true,
+  "feedback": {
+    "rubric_version": "trauerfall-0.2",
+    "snapshot_version": 2,
+    "criteria": [
+      {
+        "criterion_id": "empathy",
+        "level": "Übungsbedarf",
+        "rationale": "Der Servicebeitrag erkennt den Verlust nicht an und gibt der Kundin keinen Raum für eine emotionale Reaktion.",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Was würde Ihnen jetzt helfen?",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "clarification",
+        "level": "Gezeigt",
+        "rationale": "Durch die offene Frage \"Was würde Ihnen jetzt helfen?\" wird behutsam erfragt, welche Unterstützung die Kundin benötigt.",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Was würde Ihnen jetzt helfen?",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "next_step",
+        "level": "Keine Gelegenheit",
+        "rationale": "Die Kundin äußerte den Wunsch nach schriftlicher Orientierung erst im letzten Kundenbeitrag. Danach hatte die Servicekraft keine Gelegenheit zu antworten.",
+        "evidence": []
+      }
+    ],
+    "strengths": [
+      {
+        "criterion_id": "clarification",
+        "text": "Stellt eine offene, unterstützungsorientierte Frage, um den Wunsch der Kundin zu ermitteln.",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Was würde Ihnen jetzt helfen?",
+            "assisted": false
+          }
+        ]
+      }
+    ],
+    "improvements": [
+      {
+        "criterion_id": "empathy",
+        "text": "Verlust mit einfühlsamer Anteilnahme anerkennen und der Kundin Raum für eine Reaktion geben.",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Was würde Ihnen jetzt helfen?",
+            "assisted": false
+          }
+        ]
+      }
+    ],
+    "critical_findings": [],
+    "next_practice": null
+  }
+}

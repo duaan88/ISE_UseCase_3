@@ -1,0 +1,108 @@
+{
+  "run": 3,
+  "model": "alias-fast",
+  "errors": [
+    "Beleg verweist nicht auf einen bestätigten Servicebeitrag.",
+    "Unbelegte Zeitspanne in der Kriterienbegründung."
+  ],
+  "id_map": {
+    "m001": "petra-gemischt-m001",
+    "m002": "petra-gemischt-m002",
+    "m003": "petra-gemischt-m003",
+    "m004": "petra-gemischt-m004",
+    "m005": "petra-gemischt-m005"
+  },
+  "critical_match": true,
+  "feedback": {
+    "rubric_version": "auszahlung-0.2",
+    "snapshot_version": 3,
+    "criteria": [
+      {
+        "criterion_id": "empathy",
+        "level": "Teilweise gezeigt",
+        "rationale": "Der Service erkannte den Ärger, jedoch ohne die konkrete Wartezeit von drei Wochen und die finanzielle Belastung durch die offene Rechnung zu benennen.",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Ich verstehe Ihren Ärger. Was stand im letzten Brief?",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "clarification",
+        "level": "Gezeigt",
+        "rationale": "Durch die Frage nach dem Inhalt des letzten Briefes wurde fehlende Information aktiv erfragt.",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Ich verstehe Ihren Ärger. Was stand im letzten Brief?",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "next_step",
+        "level": "Teilweise gezeigt",
+        "rationale": "Eine Weiterleitung wurde angeboten, jedoch ohne Angabe von Zielabteilung oder Rückmeldezeitpunkt, was die Anforderung nicht erfüllt.",
+        "evidence": [
+          {
+            "message_id": "m004",
+            "quote": "Ich leite Sie weiter.",
+            "assisted": false
+          }
+        ]
+      }
+    ],
+    "strengths": [
+      {
+        "criterion_id": "empathy",
+        "text": "Der Service zeigte Grundverständnis, indem er den Ärger des Kunden ansprach.",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Ich verstehe Ihren Ärger. Was stand im letzten Brief?",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "clarification",
+        "text": "Die gezielte Frage nach dem letzten Brief ermöglichte das Sammeln erforderlicher Informationen.",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Ich verstehe Ihren Ärger. Was stand im letzten Brief?",
+            "assisted": false
+          }
+        ]
+      }
+    ],
+    "improvements": [
+      {
+        "criterion_id": "empathy",
+        "text": "Finanzielle Belastung und die dreitägige Wartezeit konkret benennen.",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Ich verstehe Ihren Ärger. Was stand im letzten Brief?",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "next_step",
+        "text": "Ziel der Weiterleitung, zuständige Abteilung und ein realistisches Rückmeldezeitfenster angeben.",
+        "evidence": [
+          {
+            "message_id": "m004",
+            "quote": "Ich leite Sie weiter.",
+            "assisted": false
+          }
+        ]
+      }
+    ],
+    "critical_findings": [],
+    "next_practice": "Formuliere eine empathische Antwort, die die dreitägige Wartezeit und die offene Rechnung konkret anspricht, und nenne bei einer Weiterleitung die zuständige Abteilung sowie einen konkreten Zeitpunkt für die Rückmeldung."
+  }
+}

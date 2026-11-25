@@ -1,0 +1,77 @@
+{
+  "run": 3,
+  "model": "alias-fast",
+  "errors": [
+    "Beleg verweist nicht auf einen bestätigten Servicebeitrag."
+  ],
+  "id_map": {
+    "m001": "nora-gemischt-m001",
+    "m002": "nora-gemischt-m002",
+    "m003": "nora-gemischt-m003"
+  },
+  "critical_match": true,
+  "feedback": {
+    "rubric_version": "trauerfall-0.2",
+    "snapshot_version": 2,
+    "criteria": [
+      {
+        "criterion_id": "empathy",
+        "level": "Übungsbedarf",
+        "rationale": "Der Servicebeitrag erkennt den Tod des Vaters nicht an und enthält keine Anteilnahme.",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Was würde Ihnen jetzt helfen?",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "clarification",
+        "level": "Gezeigt",
+        "rationale": "Durch die offene Frage \"Was würde Ihnen jetzt helfen?\" wird nach dem gewünschten Unterstützungsbedarf gefragt.",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Was würde Ihnen jetzt helfen?",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "next_step",
+        "level": "Keine Gelegenheit",
+        "rationale": "Die Kundin äußerte den Wunsch nach schriftlicher Orientierung erst im letzten Kundenbeitrag. Danach hatte die Servicekraft keine Gelegenheit zu antworten.",
+        "evidence": []
+      }
+    ],
+    "strengths": [
+      {
+        "criterion_id": "clarification",
+        "text": "Offene Frage nach dem aktuellen Unterstützungsbedarf gestellt.",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Was würde Ihnen jetzt helfen?",
+            "assisted": false
+          }
+        ]
+      }
+    ],
+    "improvements": [
+      {
+        "criterion_id": "empathy",
+        "text": "Verlust nicht anerkannt; Kondolenz und respektvolle Anteilnahme fehlen.",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Was würde Ihnen jetzt helfen?",
+            "assisted": false
+          }
+        ]
+      }
+    ],
+    "critical_findings": [],
+    "next_practice": "Formulieren Sie eine ausdrückliche Anteilnahme, z.B. \"Es tut mir sehr leid, von Ihrem Verlust zu hören. Ich bin für Sie da…\"."
+  }
+}

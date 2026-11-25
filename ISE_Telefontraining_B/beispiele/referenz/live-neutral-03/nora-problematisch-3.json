@@ -1,0 +1,123 @@
+{
+  "run": 3,
+  "model": "alias-fast",
+  "errors": [],
+  "id_map": {
+    "m001": "nora-problematisch-m001",
+    "m002": "nora-problematisch-m002",
+    "m003": "nora-problematisch-m003",
+    "m004": "nora-problematisch-m004",
+    "m005": "nora-problematisch-m005"
+  },
+  "critical_match": true,
+  "feedback": {
+    "rubric_version": "trauerfall-0.2",
+    "snapshot_version": 3,
+    "criteria": [
+      {
+        "criterion_id": "empathy",
+        "level": "Übungsbedarf",
+        "rationale": "Der Service beginnt sofort mit einer drängenden Frage und erwähnt den Verlust nicht, zeigt also kein Verständnis oder Anteilnahme.",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Machen wir schnell. Welche Verträge hatte Ihr Vater genau?",
+            "assisted": false
+          },
+          {
+            "message_id": "m004",
+            "quote": "Dafür haben wir keine Zeit. Ich leite Sie weiter.",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "clarification",
+        "level": "Übungsbedarf",
+        "rationale": "Es wird sofort nach Vertragsdetails gefragt, ohne zu erfragen, welche Unterstützung die Kundin aktuell wünscht.",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Machen wir schnell. Welche Verträge hatte Ihr Vater genau?",
+            "assisted": false
+          },
+          {
+            "message_id": "m004",
+            "quote": "Dafür haben wir keine Zeit. Ich leite Sie weiter.",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "next_step",
+        "level": "Übungsbedarf",
+        "rationale": "Es wird kein einfühlsamer nächster Schritt angeboten, weder ein Angebot einer schriftlichen Übersicht noch die Einholung von Zustimmung zum Weiterleiten.",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Machen wir schnell. Welche Verträge hatte Ihr Vater genau?",
+            "assisted": false
+          },
+          {
+            "message_id": "m004",
+            "quote": "Dafür haben wir keine Zeit. Ich leite Sie weiter.",
+            "assisted": false
+          }
+        ]
+      }
+    ],
+    "strengths": [],
+    "improvements": [
+      {
+        "criterion_id": "empathy",
+        "text": "Beginnen Sie mit einer kondolierenden Formulierung, z. B. „Es tut mir sehr leid, von Ihrem Verlust zu hören.“",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Machen wir schnell. Welche Verträge hatte Ihr Vater genau?",
+            "assisted": false
+          },
+          {
+            "message_id": "m004",
+            "quote": "Dafür haben wir keine Zeit. Ich leite Sie weiter.",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "clarification",
+        "text": "Fragen Sie behutsam nach dem gewünschten Unterstützungsbedarf, etwa „Wie können wir Ihnen in dieser Situation am besten weiterhelfen?\"",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Machen wir schnell. Welche Verträge hatte Ihr Vater genau?",
+            "assisted": false
+          },
+          {
+            "message_id": "m004",
+            "quote": "Dafür haben wir keine Zeit. Ich leite Sie weiter.",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "next_step",
+        "text": "Bieten Sie einen konkreten, einvernehmlichen nächsten Schritt an (z. B. schriftliche Übersicht zusenden) und holen Sie das Einverständnis ein.",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Machen wir schnell. Welche Verträge hatte Ihr Vater genau?",
+            "assisted": false
+          },
+          {
+            "message_id": "m004",
+            "quote": "Dafür haben wir keine Zeit. Ich leite Sie weiter.",
+            "assisted": false
+          }
+        ]
+      }
+    ],
+    "critical_findings": [],
+    "next_practice": "Formulieren Sie eine einleitende, empathische Antwort mit Kondolenz und fragen Sie nach dem konkreten Wunsch der Kundin."
+  }
+}

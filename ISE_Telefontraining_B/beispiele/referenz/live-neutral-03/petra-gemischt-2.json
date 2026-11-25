@@ -1,0 +1,16 @@
+{
+  "run": 2,
+  "model": "alias-fast",
+  "errors": [
+    "Unbelegte Zeitspanne in der Kriterienbegründung.",
+    "Unbelegte Zeitspanne in der Kriterienbegründung.",
+    "Unbelegte Zeitspanne in der Kriterienbegründung."
+  ],
+  "id_map": {
+    "m001": "petra-gemischt-m001",
+    "m002": "petra-gemischt-m002",
+    "m003": "petra-gemischt-m003",
+    "m004": "petra-gemischt-m004",
+    "m005": "petra-gemischt-m005"
+  }
+}

@@ -1,0 +1,106 @@
+{
+  "run": 3,
+  "model": "alias-fast",
+  "errors": [],
+  "id_map": {
+    "m001": "petra-problematisch-m001",
+    "m002": "petra-problematisch-m002",
+    "m003": "petra-problematisch-m003",
+    "m004": "petra-problematisch-m004",
+    "m005": "petra-problematisch-m005"
+  },
+  "critical_match": true,
+  "feedback": {
+    "rubric_version": "auszahlung-0.2",
+    "snapshot_version": 3,
+    "criteria": [
+      {
+        "criterion_id": "empathy",
+        "level": "Übungsbedarf",
+        "rationale": "Die Servicekraft erkennt die finanzielle Belastung und die Wartezeit des Kunden nicht an, sondern leitet mit einer Vergleichsaussage ab.",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Andere warten auch. Was stand im letzten Brief?",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "clarification",
+        "level": "Gezeigt",
+        "rationale": "Durch die Frage nach dem Inhalt des letzten Briefes wird relevante, noch fehlende Information aktiv erfragt.",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Andere warten auch. Was stand im letzten Brief?",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "next_step",
+        "level": "Übungsbedarf",
+        "rationale": "Statt eines prüfbaren Schrittes wird eine unbelegte Zahlungszusage gegeben, was keine realistische Handlungszusage darstellt.",
+        "evidence": [
+          {
+            "message_id": "m004",
+            "quote": "Das Geld ist morgen garantiert da.",
+            "assisted": false
+          }
+        ]
+      }
+    ],
+    "strengths": [
+      {
+        "criterion_id": "clarification",
+        "text": "Gezielte Nachfrage zum letzten Brief schafft notwendige Information.",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Andere warten auch. Was stand im letzten Brief?",
+            "assisted": false
+          }
+        ]
+      }
+    ],
+    "improvements": [
+      {
+        "criterion_id": "empathy",
+        "text": "Finanzielle Belastung und dreitägige Wartezeit konkret anerkennen.",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Andere warten auch. Was stand im letzten Brief?",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "next_step",
+        "text": "Klare, überprüfbare Vorgehensweise (z. B. Prüfung der Unterlagen und Rückmeldung in 2 Tagen) anbieten statt unbelegter Garantien.",
+        "evidence": [
+          {
+            "message_id": "m004",
+            "quote": "Das Geld ist morgen garantiert da.",
+            "assisted": false
+          }
+        ]
+      }
+    ],
+    "critical_findings": [
+      {
+        "rule_id": "auszahlung_termin_offen",
+        "reason": "Die Servicekraft sagt eine Zahlung zu einem bestimmten Termin zu. Im Übungsfall ist der Auszahlungstermin offen.",
+        "evidence": [
+          {
+            "message_id": "m004",
+            "quote": "Das Geld ist morgen garantiert da.",
+            "assisted": false
+          }
+        ]
+      }
+    ],
+    "next_practice": "Zeige dem Kunden Empathie, bestätige die Wartezeit und die offene Rechnung, und biete einen konkret nachprüfbaren nächsten Schritt (z. B. Prüfung der Unterlagen und Rückmeldung in 2 Tagen) an."
+  }
+}

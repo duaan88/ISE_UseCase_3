@@ -1,0 +1,95 @@
+{
+  "run": 2,
+  "model": "alias-fast",
+  "errors": [
+    "Unbelegte Zeitspanne in der Kriterienbegründung."
+  ],
+  "id_map": {
+    "m001": "petra-gut-m001",
+    "m002": "petra-gut-m002",
+    "m003": "petra-gut-m003",
+    "m004": "petra-gut-m004",
+    "m005": "petra-gut-m005"
+  },
+  "critical_match": true,
+  "feedback": {
+    "rubric_version": "auszahlung-0.2",
+    "snapshot_version": 2,
+    "criteria": [
+      {
+        "criterion_id": "empathy",
+        "level": "Gezeigt",
+        "rationale": "Die Servicekraft erkennt die Wartezeit und die Belastung des Kunden explizit an („das ist belastend“).",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Drei Wochen warten und jetzt die Rechnung vor sich haben – das ist belastend. Was stand im letzten Brief?",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "clarification",
+        "level": "Gezeigt",
+        "rationale": "Durch die Frage nach dem Inhalt des letzten Briefes wird fehlende Information aktiv erfragt.",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Drei Wochen warten und jetzt die Rechnung vor sich haben – das ist belastend. Was stand im letzten Brief?",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "next_step",
+        "level": "Gezeigt",
+        "rationale": "Ein konkreter Handlungsschritt (Formular senden, Rückmeldung morgen) sowie die fehlende Zahlungsgarantie werden transparent kommuniziert und um Bestätigung gebeten.",
+        "evidence": [
+          {
+            "message_id": "m004",
+            "quote": "Ich sende Ihnen das Formular und melde mich morgen mit einem Zwischenstand. Einen Zahlungstermin habe ich noch nicht. Passt das für Sie?",
+            "assisted": false
+          }
+        ]
+      }
+    ],
+    "strengths": [
+      {
+        "criterion_id": "empathy",
+        "text": "Klare Anerkennung der Wartezeit und der damit verbundenen Belastung.",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Drei Wochen warten und jetzt die Rechnung vor sich haben – das ist belastend. Was stand im letzten Brief?",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "clarification",
+        "text": "Zielgerichtete Nachfrage nach noch fehlenden Informationen.",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Drei Wochen warten und jetzt die Rechnung vor sich haben – das ist belastend. Was stand im letzten Brief?",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "next_step",
+        "text": "Konkretes, realistisch geplantes Vorgehen mit Rückmeldetermin.",
+        "evidence": [
+          {
+            "message_id": "m004",
+            "quote": "Ich sende Ihnen das Formular und melde mich morgen mit einem Zwischenstand. Einen Zahlungstermin habe ich noch nicht. Passt das für Sie?",
+            "assisted": false
+          }
+        ]
+      }
+    ],
+    "improvements": [],
+    "critical_findings": [],
+    "next_practice": null
+  }
+}

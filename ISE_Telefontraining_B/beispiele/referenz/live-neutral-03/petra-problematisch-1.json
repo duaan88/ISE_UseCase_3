@@ -1,0 +1,106 @@
+{
+  "run": 1,
+  "model": "alias-fast",
+  "errors": [],
+  "id_map": {
+    "m001": "petra-problematisch-m001",
+    "m002": "petra-problematisch-m002",
+    "m003": "petra-problematisch-m003",
+    "m004": "petra-problematisch-m004",
+    "m005": "petra-problematisch-m005"
+  },
+  "critical_match": true,
+  "feedback": {
+    "rubric_version": "auszahlung-0.2",
+    "snapshot_version": 3,
+    "criteria": [
+      {
+        "criterion_id": "empathy",
+        "level": "Übungsbedarf",
+        "rationale": "Der Servicebeitrag erkennt die persönliche Belastung nicht konkret an, sondern vergleicht sie nur mit anderen Kunden.",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Andere warten auch. Was stand im letzten Brief?",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "clarification",
+        "level": "Gezeigt",
+        "rationale": "Durch die Frage nach dem Inhalt des letzten Briefs wird gezielt nach fehlenden Informationen gesucht.",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Andere warten auch. Was stand im letzten Brief?",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "next_step",
+        "level": "Übungsbedarf",
+        "rationale": "Eine unbelegte Zahlungsgarantie stellt keinen realen nächsten Schritt dar; es fehlt eine konkrete Handlung, Zuständigkeit oder Rückmeldezeit.",
+        "evidence": [
+          {
+            "message_id": "m004",
+            "quote": "Das Geld ist morgen garantiert da.",
+            "assisted": false
+          }
+        ]
+      }
+    ],
+    "strengths": [
+      {
+        "criterion_id": "clarification",
+        "text": "Fragte gezielt nach dem Inhalt des letzten Briefs, um fehlende Informationen zu erlangen.",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Andere warten auch. Was stand im letzten Brief?",
+            "assisted": false
+          }
+        ]
+      }
+    ],
+    "improvements": [
+      {
+        "criterion_id": "empathy",
+        "text": "Finanzielle Belastung und Wartezeit konkret anerkennen, z. B. mit einem Satz wie „Ich verstehe, dass die lange Wartezeit und die anstehende Rechnung für Sie belastend sind.“",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Andere warten auch. Was stand im letzten Brief?",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "next_step",
+        "text": "Statt einer unbelegten Zahlungsgarantie konkrete nächste Schritte nennen (z. B. fehlendes Formular anfordern, Bearbeitungszeit nennen) und Zuständigkeit sowie Rückmeldezeit klar kommunizieren.",
+        "evidence": [
+          {
+            "message_id": "m004",
+            "quote": "Das Geld ist morgen garantiert da.",
+            "assisted": false
+          }
+        ]
+      }
+    ],
+    "critical_findings": [
+      {
+        "rule_id": "auszahlung_termin_offen",
+        "reason": "Die Servicekraft sagt eine Zahlung zu einem bestimmten Termin zu. Im Übungsfall ist der Auszahlungstermin offen.",
+        "evidence": [
+          {
+            "message_id": "m004",
+            "quote": "Das Geld ist morgen garantiert da.",
+            "assisted": false
+          }
+        ]
+      }
+    ],
+    "next_practice": "Empathische Anerkennung der finanziellen Belastung und konkrete nächste Schritte (Formular anfordern, Bearbeitungszeit angeben) trainieren."
+  }
+}

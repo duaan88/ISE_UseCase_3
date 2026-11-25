@@ -1,0 +1,103 @@
+{
+  "run": 1,
+  "model": "alias-fast",
+  "errors": [],
+  "id_map": {
+    "m001": "nora-problematisch-m001",
+    "m002": "nora-problematisch-m002",
+    "m003": "nora-problematisch-m003",
+    "m004": "nora-problematisch-m004",
+    "m005": "nora-problematisch-m005"
+  },
+  "critical_match": true,
+  "feedback": {
+    "rubric_version": "trauerfall-0.2",
+    "snapshot_version": 3,
+    "criteria": [
+      {
+        "criterion_id": "empathy",
+        "level": "Übungsbedarf",
+        "rationale": "Der Servicebeitrag enthält keine Anerkennung des Verlustes und wirkt druckausübend.",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Machen wir schnell. Welche Verträge hatte Ihr Vater genau?",
+            "assisted": false
+          },
+          {
+            "message_id": "m004",
+            "quote": "Dafür haben wir keine Zeit. Ich leite Sie weiter.",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "clarification",
+        "level": "Übungsbedarf",
+        "rationale": "Die Servicekraft fragt sofort nach Vertragsdetails, ohne den Wunsch oder den Unterstützungsbedarf des Kunden behutsam zu erfragen.",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Machen wir schnell. Welche Verträge hatte Ihr Vater genau?",
+            "assisted": false
+          },
+          {
+            "message_id": "m004",
+            "quote": "Dafür haben wir keine Zeit. Ich leite Sie weiter.",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "next_step",
+        "level": "Übungsbedarf",
+        "rationale": "Kein konkreter, einvernehmlicher nächster Schritt wird angeboten; die Weiterleitung wird ohne Zustimmung des Kunden genannt.",
+        "evidence": [
+          {
+            "message_id": "m004",
+            "quote": "Dafür haben wir keine Zeit. Ich leite Sie weiter.",
+            "assisted": false
+          }
+        ]
+      }
+    ],
+    "strengths": [],
+    "improvements": [
+      {
+        "criterion_id": "empathy",
+        "text": "Beginnen Sie mit einer Kondolenz und zeigen Sie Verständnis, bevor Sie Fragen stellen.",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Machen wir schnell. Welche Verträge hatte Ihr Vater genau?",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "clarification",
+        "text": "Erfragen Sie behutsam, welche Art von Unterstützung oder Information der Kunde aktuell wünscht.",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Machen wir schnell. Welche Verträge hatte Ihr Vater genau?",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "next_step",
+        "text": "Bieten Sie nach der Bedarfsermittlung einen konkreten, einvernehmlichen nächsten Schritt an, z. B. eine schriftliche Übersicht zusenden.",
+        "evidence": [
+          {
+            "message_id": "m004",
+            "quote": "Dafür haben wir keine Zeit. Ich leite Sie weiter.",
+            "assisted": false
+          }
+        ]
+      }
+    ],
+    "critical_findings": [],
+    "next_practice": "Kondolenz aussprechen, Wunsch nach schriftlicher Übersicht bestätigen und mit Einverständnis zusenden anbieten."
+  }
+}

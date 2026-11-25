@@ -1,5 +1,7 @@
 # Referenzvergleich für Petra und Nora
 
+[Nachtest zur Antwortgelegenheit und zu Zeitangaben](VERGLEICH_03.md) mit drei gültigen Live-Berichten je Referenz.
+
 **Folgelauf:** [Profile 0.2 mit Grenzbeispielen, neutralen IDs und drei gültigen Live-Berichten je Gespräch](VERGLEICH_02.md). Die untenstehenden Ergebnisse bleiben als Ausgangsstand erhalten.
 
 Stand 25. November 2026, Bewertungslogik von B auf `e71ebef`. Die sechs fiktiven Transkripte enthalten stabile Nachrichten-IDs, eine vor dem Modellaufruf festgelegte Sollstufe je Kriterium, eine Begründung und den Originalbeleg. Bei „Keine Gelegenheit“ bleibt die Belegliste leer. Die Referenzen sind Arbeitsentwürfe ohne unabhängige Team- oder Allianz-Bewertung.
