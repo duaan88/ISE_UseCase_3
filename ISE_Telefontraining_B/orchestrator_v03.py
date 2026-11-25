@@ -157,9 +157,11 @@ class Orchestrator:
 
             customer_text = reply.text
             if context.clue_revealed and not state.context.clue_revealed:
-                clue = state.scenario.card.hinweis
-                if clue not in customer_text:
-                    customer_text = f"{clue} {customer_text}"
+                # Die Fallkarte beantwortet die auslösende Nachfrage vollständig.
+                # Freitext kann denselben Fakt auch mit ganz anderen Worten wiederholen.
+                customer_text = state.scenario.card.hinweis
+                if escalation or turn >= RUNDENLIMIT:
+                    customer_text += " Ich beende das Gespräch jetzt."
             state.messages += (
                 Message(f"{state.id}-m{2 * turn:03d}", "trainee", turn, text.strip()),
                 Message(f"{state.id}-m{2 * turn + 1:03d}", "customer", turn, customer_text),
