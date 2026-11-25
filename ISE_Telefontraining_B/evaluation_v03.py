@@ -4,6 +4,8 @@ import json
 from pathlib import Path
 import re
 
+from training import _zusage_beleg
+
 KNOWLEDGE_FILE = Path(__file__).with_name("wissen") / "synthetisch_v03.json"
 LEVELS = ("Gezeigt", "Teilweise gezeigt", "Übungsbedarf", "Keine Gelegenheit")
 INSTRUCTION = """Bewerte die Gesprächsführung in einem fiktiven deutschen Kundenservice-Dialog.
@@ -110,11 +112,24 @@ def validate_feedback(raw, snapshot, rubric):
     if "next_practice" not in raw:
         raise InvalidEvaluation("Das Feld next_practice fehlt.")
     practice = raw["next_practice"]
+    critical_findings = []
+    if snapshot["scenario_id"] == "payout_missing":
+        for message in messages.values():
+            quote = _zusage_beleg(message["text"])
+            if quote:
+                critical_findings.append({
+                    "rule_id": "auszahlung_termin_offen",
+                    "reason": "Die Servicekraft sagt eine Zahlung zu einem bestimmten Termin zu. "
+                              "Im Übungsfall ist der Auszahlungstermin offen.",
+                    "evidence": [{"message_id": message["id"], "quote": quote,
+                                  "assisted": message["assisted"]}],
+                })
     return {
         "rubric_version": rubric["version"],
         "snapshot_version": snapshot["snapshot_version"],
         "criteria": criteria,
         **suggestions,
+        "critical_findings": critical_findings,
         "next_practice": None if practice is None else _required_text(practice),
     }
 

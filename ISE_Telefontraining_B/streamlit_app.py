@@ -139,6 +139,17 @@ def evidence_rows(evidence, messages):
 def render_feedback(report, messages):
     st.header("Feedback zur Übung")
     st.caption(f"Rubrik {report['rubric_version']} · Gesprächsversion {report['snapshot_version']}")
+    st.subheader("Kritische Befunde")
+    if report["critical_findings"]:
+        for finding in report["critical_findings"]:
+            st.write("Unbelegte Auszahlungszusage")
+            st.text(finding["reason"])
+            evidence_rows(finding["evidence"], messages)
+    else:
+        st.caption("Keine eindeutige terminierte Auszahlungszusage erkannt." if
+                   st.session_state.view["scenario_id"] == "payout_missing" else
+                   "Für diesen Fall ist keine kritische Prüfregel hinterlegt.")
+    st.subheader("Kriterienbewertung")
     for item in report["criteria"]:
         st.write(CRITERIA.get(item["criterion_id"], item["criterion_id"]), "·", item["level"])
         st.text(item["rationale"])

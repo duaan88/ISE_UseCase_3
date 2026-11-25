@@ -67,12 +67,19 @@ class Finding(TypedDict):
     evidence: list[Evidence]
 
 
+class CriticalFinding(TypedDict):
+    rule_id: str
+    reason: str
+    evidence: list[Evidence]
+
+
 class Feedback(TypedDict):
     rubric_version: str
     snapshot_version: int
     criteria: list[Observation]
     strengths: list[Finding]
     improvements: list[Finding]
+    critical_findings: list[CriticalFinding]
     next_practice: str | None
 
 

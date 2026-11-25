@@ -16,6 +16,23 @@ except ImportError:
 
 
 class EvaluationTests(unittest.TestCase):
+    def test_critical_payout_finding_uses_original_sentence_and_service_role(self):
+        rubric, _ = load_knowledge()
+        snapshot = load_fixture("regular")
+        raw = fixture_model_output("regular")
+        promise = "Das Geld ist morgen garantiert da."
+        callback = "Sie erhalten morgen eine Rückmeldung zur Auszahlung."
+        snapshot["messages"][0]["text"] = promise
+        service = snapshot["messages"][1]
+        service["text"] = callback
+        self.assertEqual(validate_feedback(raw, snapshot, rubric)["critical_findings"], [])
+        service["text"] += " " + promise
+        finding, = validate_feedback(raw, snapshot, rubric)["critical_findings"]
+        self.assertEqual(finding["evidence"], [{"message_id": service["id"], "quote": promise,
+                                               "assisted": service["assisted"]}])
+        snapshot["scenario_id"] = "bereavement"
+        self.assertEqual(validate_feedback(raw, snapshot, rubric)["critical_findings"], [])
+
     def test_evaluation_has_extra_budget_and_rejects_truncated_output(self):
         from training import Blablador, Modellausgabefehler
 

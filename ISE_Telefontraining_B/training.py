@@ -234,7 +234,8 @@ def _auszahlungszusage(aussage: str, beleg: str) -> bool:
                 r"(?:ist|wird).*\b(?:da|überwiesen|ausgezahlt))\b|"
                 r"\b(?:die\s+)?(?:auszahlung|zahlung)\b.*\b(?:erfolgt|kommt|"
                 r"wird.*\b(?:überwiesen|ausgeführt))\b|"
-                r"\bsie\s+(?:erhalten|bekommen)\b.*\b(?:geld|betrag|auszahlung|zahlung)\b|"
+                r"\bsie\s+(?:erhalten|bekommen)\b(?:(?!\b(?:rückmeldung|antwort|auskunft|"
+                r"information\w*|zwischenstand|nachricht|update)\b).)*\b(?:geld|betrag|auszahlung|zahlung)\b|"
                 r"\bich\s+(?:überweise|zahle).*\b(?:geld|betrag)\b", klausel)
             if termin and zahlung:
                 return True
