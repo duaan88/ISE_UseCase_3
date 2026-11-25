@@ -100,6 +100,21 @@ class TextFlowTests(unittest.TestCase):
         self.assertEqual([m["turn"] for m in view3["messages"]], [0, 1, 1, 2, 2, 3, 3])
         self.assertEqual(len({m["id"] for m in view3["messages"]}), 7)
 
+    def test_first_disclosure_uses_one_answer_even_when_model_paraphrases_it(self):
+        from scenarios_v03 import SCENARIOS
+
+        for case, paraphrase in (
+            ("payout_missing", "Laut Schreiben fehlt das von mir signierte Bankformular."),
+            ("bereavement", "Bitte schicken Sie mir die Schritte kurz zum Nachlesen."),
+        ):
+            with self.subTest(case=case):
+                self.model.failure = None
+                view = self.start(scenario_id=case, request_id=case)
+                view = self.turn(view, TURNS[case][0])
+                self.model.failure = json.dumps({"text": paraphrase, "accepts_step": False})
+                view = self.turn(view, TURNS[case][1])
+                self.assertEqual(view["messages"][-1]["text"], SCENARIOS[case].card.hinweis)
+
     def test_second_scenario_has_own_clue_and_agreement(self):
         view = self.run_case("missing_followup")
         self.assertIn("alte E-Mail-Adresse", view["messages"][2]["text"])
