@@ -13,6 +13,11 @@ TURNS = {
         "Ich sende Ihnen das Formular zu und melde mich morgen bis 12 Uhr mit einem Zwischenstand. "
         "Einen Auszahlungstermin kann ich noch nicht bestätigen. Passt das für Sie?",
     ),
+    "bereavement": (
+        "Das tut mir leid. Nehmen Sie sich die Zeit, die Sie brauchen.",
+        "Was würde Ihnen im Moment helfen?",
+        "Ich sende Ihnen eine kurze Übersicht und melde mich morgen bei Ihnen. Passt das für Sie?",
+    ),
     "missing_followup": (
         "Ich verstehe, dass die Wartezeit Sie belastet. An welche Adresse ging die letzte Nachricht?",
         "Ich prüfe Ihre Adresse und melde mich morgen bis 12 Uhr mit einem Zwischenstand. Passt das für Sie?",

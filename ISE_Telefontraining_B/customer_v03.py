@@ -128,6 +128,9 @@ class ExampleCustomerModel:
             text = "Ich warte immer noch. Welche Information brauchen Sie von mir?"
         elif not daten["fallhinweis"]:
             facts = " ".join(daten["sichtbare_fakten"])
+            if "verstorben" in facts:
+                return json.dumps({"text": "Mein Vater ist verstorben. Ich weiß nicht, womit ich anfangen soll.",
+                                   "accepts_step": False}, ensure_ascii=False)
             prefix = "Die Auszahlung wurde angekündigt. Einen genauen Termin kenne ich nicht." if (
                 "Auszahlung" in facts
             ) else "Ich warte immer noch auf die Antwort zu meiner Serviceanfrage."

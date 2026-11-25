@@ -1,4 +1,4 @@
-"""Zwei synthetische Fallprofile und die deterministische Gesprächsdynamik."""
+"""Synthetische Fallprofile und die deterministische Gesprächsdynamik."""
 
 import re
 from dataclasses import asdict, dataclass
@@ -25,13 +25,14 @@ class Scenario:
     protected_words: str
     clue_id: str
     action: str
+    reveal_when: str = "Passende Nachfrage nach dem letzten Kontakt oder relevanten Unterlagen."
 
     def reference(self) -> dict:
         """Vollständige Referenz für Bewertung, getrennt vom Kundenkontext."""
         facts = [{
             "id": self.clue_id,
             "text": self.card.interne_fakten[-1],
-            "reveal_when": "Passende Nachfrage nach dem letzten Kontakt oder relevanten Unterlagen.",
+            "reveal_when": self.reveal_when,
         }]
         if self.card.termin_offen:
             facts.insert(0, {"id": "payout_date_open", "text": self.public_facts[-1]})
@@ -63,6 +64,24 @@ SCENARIOS = {
         r"formular|bankverbindung|unterschrift|unterschrieben",
         "bank_form_missing",
         r"\bich\s+(?:sende|schicke)\b[^.!?;]*\bformular\b",
+    ),
+    "bereavement": Scenario(
+        "bereavement",
+        Fall("Todesfall eines Angehörigen", "Kundin",
+             "Nora Beck hat ihren Vater verloren und sucht Orientierung für den ersten Kontakt.",
+             "Mein Vater ist verstorben. Ich weiß nicht, wo ich anfangen soll.",
+             "Eine kurze schriftliche Übersicht würde mir helfen. Am Telefon ist mir das gerade zu viel.",
+             interne_fakten=("Nora wünscht eine kurze schriftliche Übersicht.",),
+             erlaubte_schritte=("Auf Wunsch eine kurze Übersicht anbieten und die Rückmeldung abstimmen.",)),
+        ("Mein Vater ist verstorben. Können Sie mir den ersten Schritt erklären?",
+         "Hier ist Nora Beck. Mein Vater ist verstorben. Ich weiß nicht, wo ich anfangen soll.",
+         "Es ist etwas passiert in meiner Familie. Es fällt mir schwer, darüber zu sprechen."),
+        ("Noras Vater ist verstorben. Sie sucht Orientierung für den ersten Kontakt.",),
+        r"passiert|geschehen|verstorben|verlust|anliegen|erzählen",
+        r"was (?:würde|hilft|brauchen)|wie (?:kann|möchten|darf)|schriftlich|übersicht",
+        r"schriftlich|übersicht", "written_orientation",
+        r"\bich\s+(?:sende|schicke|schreibe)\b[^.!?;]*\bübersicht\b",
+        "Behutsame Nachfrage nach gewünschter Unterstützung oder Kontaktform.",
     ),
     "missing_followup": Scenario(
         "missing_followup", FAELLE["rueckmeldung"],
