@@ -24,12 +24,12 @@ CRITERIA = {"empathy": "Empathie", "clarification": "Anliegen klären", "next_st
 CORE_MODULES = ("orchestrator_v03", "customer_v03", "scenarios_v03", "contract_v03")
 
 
-def build_core(customer_model, evaluation_model):
+def build_core(customer_model, evaluation_model, *, scenario_id=None):
     """Bs Anschluss an As Orchestrator. Beide Modelle werden explizit gewählt."""
     from customer_v03 import CustomerAgent
     from orchestrator_v03 import Orchestrator
 
-    rubric, _ = load_knowledge()
+    rubric, _ = load_knowledge(scenario_id=scenario_id)
     return Orchestrator(CustomerAgent(customer_model),
                         evaluator=partial(evaluate, model=evaluation_model), rubric=rubric)
 
@@ -75,7 +75,7 @@ def start_form(state):
 
         backend = Blablador(key, timeout=30)
         core = build_core(backend if mode == "Live-Gespräch" else ExampleCustomerModel(),
-                          Blablador(key, timeout=90))
+                          Blablador(key, timeout=90), scenario_id=scenario_id)
     try:
         view = core.start_session(
             contract_version="0.3", request_id=uuid4().hex, scenario_id=scenario_id,

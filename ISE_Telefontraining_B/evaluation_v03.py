@@ -39,10 +39,10 @@ class InvalidEvaluation(ValueError):
     """Die Ausgabe des Modells verletzt die vereinbarte Struktur."""
 
 
-def load_knowledge(path=KNOWLEDGE_FILE):
+def load_knowledge(path=KNOWLEDGE_FILE, *, scenario_id=None):
     """Versionierte, freigegebene Inhalte können aus derselben Struktur geladen werden."""
     bundle = json.loads(Path(path).read_text(encoding="utf-8"))
-    rubric = bundle["rubric"]
+    rubric = {**bundle["rubric"], **bundle.get("evaluation_profiles", {}).get(scenario_id, {})}
     return {**rubric, "levels": list(LEVELS)}, {
         case["scenario_id"]: case for case in bundle["scenarios"]
     }

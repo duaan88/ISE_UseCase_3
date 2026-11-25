@@ -24,6 +24,9 @@ class CoreIntegrationTests(unittest.TestCase):
                             raise TimeoutError()
                         return ExampleCustomerModel().antwort(role, prompt, data)
                     self.assertNotIn("scenario_reference", data)
+                    profiles = {"payout_missing": "auszahlung-0.1", "bereavement": "trauerfall-0.1",
+                                "missing_followup": "provisional-0.1"}
+                    self.assertEqual(data["rubric"]["version"], profiles[scenario])
                     messages = data["snapshot"]["messages"]
                     criteria = [
                         {"criterion_id": criterion, "level": "Gezeigt", "rationale": "Beispielbeobachtung.",

@@ -9,6 +9,24 @@
     },
     "opportunity_rule": "Für den konkreten nächsten Schritt zählt, ob die Servicekraft nach Offenlegung der relevanten Information noch antworten konnte. Fehlt diese Gelegenheit, gilt Keine Gelegenheit. Lässt sie einen möglichen Schritt aus, kann der bestätigte Beitrag Übungsbedarf belegen.\n"
   },
+  "evaluation_profiles": {
+    "payout_missing": {
+      "version": "auszahlung-0.1",
+      "criteria": {
+        "empathy": "Finanzielle Belastung und Wartezeit konkret anerkennen.",
+        "clarification": "Nach bisherigen Mitteilungen fragen und offene von bestätigten Informationen trennen.",
+        "next_step": "Eine realistische Handlung, Zuständigkeit und Rückmeldung klären. Eine unbelegte Auszahlungszusage ist keine Lösung."
+      }
+    },
+    "bereavement": {
+      "version": "trauerfall-0.1",
+      "criteria": {
+        "empathy": "Den Verlust respektvoll anerkennen und Raum für eine Antwort lassen. Nur beobachtbare Formulierungen bewerten.",
+        "clarification": "Behutsam erfragen, welche Unterstützung jetzt gewünscht ist. Druck und unnötige Detailfragen berücksichtigen.",
+        "next_step": "Einen überschaubaren nächsten Schritt passend zum geäußerten Wunsch anbieten und Einverständnis erfragen. Keine Leistungs- oder Nachweispflichten erfinden."
+      }
+    }
+  },
   "scenarios": [
     {
       "scenario_id": "payout_missing",
