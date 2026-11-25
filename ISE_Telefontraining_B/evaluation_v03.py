@@ -12,6 +12,9 @@ Die einzige Quelle für Fallwissen ist der bestätigte Dialog in zeitlicher Reih
 Bewerte jeden Servicebeitrag anhand dessen, was bis zu diesem Beitrag gesagt wurde.
 Spätere Kundenaussagen dürfen den Gesprächserfolg erklären, aber keine frühere Pflicht begründen.
 Eine Vermutung oder Frage der Servicekraft bestätigt keinen Sachverhalt.
+Eine angekündigte Weiterleitung ist ein Angebot. Prüfe anhand der Kundenantwort,
+ob es angenommen, abgelehnt oder offengelassen wurde. Behaupte eine Ausführung,
+Zuständigkeit oder Vereinbarung nur, wenn der Dialog sie belegt.
 Ist die Ursache offen, beurteile, ob nachgefragt wurde. Empfehle bei Bedarf eine offene
 Klärungsfrage. Erfinde weder eine Ursache noch eine dazu passende fachliche Maßnahme.
 Das gilt für Kriterien, Stärken, Verbesserungen und den nächsten Übungsschritt.
@@ -28,7 +31,8 @@ next_practice: kurzer konkreter String oder null.
 Pro Rubrikkriterium genau ein Eintrag, nur die vorgegebenen Stufen verwenden.
 Belege nur mit IDs bestätigter trainee-Nachrichten. Für Keine Gelegenheit ist evidence_ids
 leer, bei allen übrigen Beobachtungen und Aussagen mindestens eine ID. Keine Zitate erfinden.
-Stärken und Verbesserungen dürfen leer sein, wenn das Gespräch dafür keine Grundlage bietet."""
+Formuliere jede Begründung und Empfehlung kurz. Stärken und Verbesserungen dürfen
+leer sein, wenn das Gespräch dafür keine Grundlage bietet."""
 
 
 class InvalidEvaluation(ValueError):

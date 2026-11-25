@@ -471,7 +471,8 @@ class Blablador:
                 {"role": "system", "content": auftrag},
                 {"role": "user", "content": json.dumps(daten, ensure_ascii=False)},
             ],
-            "max_tokens": 1500,
+            # Der strukturierte Bericht benötigt mehr Ausgabetokens als eine Dialogrunde.
+            "max_tokens": 6000 if rolle == "Bewertung" else 1500,
         }
         request = Request(
             "https://api.blablador.fz-juelich.de/v1/chat/completions",
@@ -481,7 +482,10 @@ class Blablador:
         )
         try:
             with urlopen(request, timeout=self.timeout) as response:
-                ergebnis = json.load(response)["choices"][0]["message"]["content"]
+                choice = json.load(response)["choices"][0]
+                if choice.get("finish_reason") == "length":
+                    raise Modellausgabefehler(f"Die Ausgabe für {rolle} hat das Tokenlimit erreicht.")
+                ergebnis = choice["message"]["content"]
         except HTTPError as exc:
             raise Modellfehler(f"Blablador meldet HTTP {exc.code} beim Agenten {rolle}.") from exc
         except (ValueError, KeyError, IndexError, TypeError) as exc:

@@ -1,8 +1,10 @@
 """Vertragstests ohne Schlüssel und ohne As Kunden-Agenten."""
 
 from pathlib import Path
+import io
+import json
 import unittest
-from unittest.mock import Mock
+from unittest.mock import Mock, patch
 
 from evaluation_v03 import InvalidEvaluation, evaluate, load_knowledge, validate_feedback
 from fixture_v03 import FixtureModel, fixture_model_output, load_fixture
@@ -14,6 +16,16 @@ except ImportError:
 
 
 class EvaluationTests(unittest.TestCase):
+    def test_evaluation_has_extra_budget_and_rejects_truncated_output(self):
+        from training import Blablador, Modellausgabefehler
+
+        client = Blablador("test")
+        partial = {"choices": [{"finish_reason": "length", "message": {"content": "{"}}]}
+        with patch("training.urlopen", return_value=io.BytesIO(json.dumps(partial).encode())) as send:
+            with self.assertRaisesRegex(Modellausgabefehler, "Tokenlimit"):
+                client.antwort("Bewertung", "", {})
+        self.assertGreater(json.loads(send.call_args.args[0].data)["max_tokens"], 1500)
+
     def test_petra_transfer_without_disclosure_keeps_solution_out_of_model_input(self):
         rubric, cases = load_knowledge()
         fixture = load_fixture("regular")

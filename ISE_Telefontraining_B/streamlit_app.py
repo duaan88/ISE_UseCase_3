@@ -74,7 +74,8 @@ def start_form(state):
         from training import Blablador
 
         backend = Blablador(key, timeout=30)
-        core = build_core(backend if mode == "Live-Gespräch" else ExampleCustomerModel(), backend)
+        core = build_core(backend if mode == "Live-Gespräch" else ExampleCustomerModel(),
+                          Blablador(key, timeout=90))
     try:
         view = core.start_session(
             contract_version="0.3", request_id=uuid4().hex, scenario_id=scenario_id,
