@@ -1,0 +1,106 @@
+{
+  "run": 2,
+  "model": "alias-fast",
+  "errors": [],
+  "id_map": {
+    "m001": "petra-problematisch-m001",
+    "m002": "petra-problematisch-m002",
+    "m003": "petra-problematisch-m003",
+    "m004": "petra-problematisch-m004",
+    "m005": "petra-problematisch-m005"
+  },
+  "critical_match": true,
+  "feedback": {
+    "rubric_version": "auszahlung-0.2",
+    "snapshot_version": 3,
+    "criteria": [
+      {
+        "criterion_id": "empathy",
+        "level": "Übungsbedarf",
+        "rationale": "Der Servicekraft fehlt eine konkrete Anerkennung der finanziellen Belastung und der dreifachen Wartezeit des Kunden.",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Andere warten auch. Was stand im letzten Brief?",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "clarification",
+        "level": "Gezeigt",
+        "rationale": "Durch die Frage nach dem Inhalt des letzten Briefes wird gezielt nach noch fehlenden Informationen gefragt.",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Andere warten auch. Was stand im letzten Brief?",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "next_step",
+        "level": "Übungsbedarf",
+        "rationale": "Es wird lediglich eine unbelegte Garantie für die Auszahlung gegeben, ohne realistische Handlung, Zuständigkeit oder Zeitrahmen.",
+        "evidence": [
+          {
+            "message_id": "m004",
+            "quote": "Das Geld ist morgen garantiert da.",
+            "assisted": false
+          }
+        ]
+      }
+    ],
+    "strengths": [
+      {
+        "criterion_id": "clarification",
+        "text": "Gezielte Nachfrage nach dem fehlenden Hinweis im Brief.",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Andere warten auch. Was stand im letzten Brief?",
+            "assisted": false
+          }
+        ]
+      }
+    ],
+    "improvements": [
+      {
+        "criterion_id": "empathy",
+        "text": "Finanzielle Belastung und die Wartezeit des Kunden konkret anerkennen.",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Andere warten auch. Was stand im letzten Brief?",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "next_step",
+        "text": "Eine konkrete, nachweisbare Maßnahme vorschlagen (z. B. fehlendes Formular anfordern, Zeitrahmen nennen).",
+        "evidence": [
+          {
+            "message_id": "m004",
+            "quote": "Das Geld ist morgen garantiert da.",
+            "assisted": false
+          }
+        ]
+      }
+    ],
+    "critical_findings": [
+      {
+        "rule_id": "auszahlung_termin_offen",
+        "reason": "Die Servicekraft sagt eine Zahlung zu einem bestimmten Termin zu. Im Übungsfall ist der Auszahlungstermin offen.",
+        "evidence": [
+          {
+            "message_id": "m004",
+            "quote": "Das Geld ist morgen garantiert da.",
+            "assisted": false
+          }
+        ]
+      }
+    ],
+    "next_practice": "Beginne mit einer empathischen Bestätigung und bitte anschließend um das fehlende Formular, um einen realistischen Auszahlungszeitplan zu vereinbaren."
+  }
+}

@@ -1,5 +1,7 @@
 # Referenzvergleich für Petra und Nora
 
+**Folgelauf:** [Profile 0.2 mit Grenzbeispielen, neutralen IDs und drei gültigen Live-Berichten je Gespräch](VERGLEICH_02.md). Die untenstehenden Ergebnisse bleiben als Ausgangsstand erhalten.
+
 Stand 25. November 2026, Bewertungslogik von B auf `e71ebef`. Die sechs fiktiven Transkripte enthalten stabile Nachrichten-IDs, eine vor dem Modellaufruf festgelegte Sollstufe je Kriterium, eine Begründung und den Originalbeleg. Bei „Keine Gelegenheit“ bleibt die Belegliste leer. Die Referenzen sind Arbeitsentwürfe ohne unabhängige Team- oder Allianz-Bewertung.
 
 Jedes Transkript wurde direkt mit demselben Bewertungsagenten und Profil wie in Streamlit ausgewertet (Blablador, konfigurierter Alias im jeweiligen Live-Bericht, Schwierigkeit Mittel). Die Eingabe enthielt Dialog und Rubrik. Weder Qualitätsetikett noch Sollbewertung wurden als Bewertungsfeld übergeben. **Einschränkung:** Die Nachrichten-IDs enthalten das Qualitätsetikett und sind für das Modell sichtbar. Ein verblindeter Wiederholungslauf sollte neutrale IDs verwenden. Es wurden keine neuen Kundenantworten erzeugt. Die Dateien unter `live/` enthalten den vollständigen ersten gültigen Bericht einschließlich Stärken, Verbesserungen und Originalzitaten.

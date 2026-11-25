@@ -1,0 +1,116 @@
+{
+  "run": 2,
+  "model": "alias-fast",
+  "errors": [],
+  "id_map": {
+    "m001": "petra-gemischt-m001",
+    "m002": "petra-gemischt-m002",
+    "m003": "petra-gemischt-m003",
+    "m004": "petra-gemischt-m004",
+    "m005": "petra-gemischt-m005"
+  },
+  "critical_match": true,
+  "feedback": {
+    "rubric_version": "auszahlung-0.2",
+    "snapshot_version": 3,
+    "criteria": [
+      {
+        "criterion_id": "empathy",
+        "level": "Teilweise gezeigt",
+        "rationale": "Der Mitarbeitende erkennt den Ärger des Kunden, erwähnt jedoch nicht die konkrete finanzielle Belastung oder die dreitägige Wartezeit.",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Ich verstehe Ihren Ärger. Was stand im letzten Brief?",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "clarification",
+        "level": "Gezeigt",
+        "rationale": "Durch die Frage nach dem Inhalt des letzten Briefes wird nach bisher unbekannten Informationen gesucht und offene von bereits bekannten Infos getrennt.",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Ich verstehe Ihren Ärger. Was stand im letzten Brief?",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "next_step",
+        "level": "Teilweise gezeigt",
+        "rationale": "Eine Weiterleitung wird angeboten, jedoch ohne Angabe von Ziel, Zuständigkeit oder Rückmeldezeit – damit unvollständig.",
+        "evidence": [
+          {
+            "message_id": "m004",
+            "quote": "Ich leite Sie weiter.",
+            "assisted": false
+          }
+        ]
+      }
+    ],
+    "strengths": [
+      {
+        "criterion_id": "empathy",
+        "text": "Der Mitarbeitende zeigt Mitgefühl, indem er den Ärger des Kunden anerkennt.",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Ich verstehe Ihren Ärger. Was stand im letzten Brief?",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "clarification",
+        "text": "Durch gezielte Nachfrage wird die noch fehlende Information zum Formular erfragt.",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Ich verstehe Ihren Ärger. Was stand im letzten Brief?",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "next_step",
+        "text": "Ein Weiterleitungsangebot wird gemacht, was einen Handlungsschritt darstellt.",
+        "evidence": [
+          {
+            "message_id": "m004",
+            "quote": "Ich leite Sie weiter.",
+            "assisted": false
+          }
+        ]
+      }
+    ],
+    "improvements": [
+      {
+        "criterion_id": "empathy",
+        "text": "Finanzielle Belastung und die dreitägige Wartezeit konkret benennen (z. B. „Ich kann verstehen, dass das Warten von drei Wochen und die offene Rechnung Sie stark belasten“…).",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Ich verstehe Ihren Ärger. Was stand im letzten Brief?",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "next_step",
+        "text": "Klare Zuständigkeit, konkretes Ziel und Rückmeldezeit nennen (z. B. „Ich leite Ihr Anliegen an die Fachabteilung für Auszahlungen weiter und Sie erhalten innerhalb von 48 Stunden ein Update.“).",
+        "evidence": [
+          {
+            "message_id": "m004",
+            "quote": "Ich leite Sie weiter.",
+            "assisted": false
+          }
+        ]
+      }
+    ],
+    "critical_findings": [],
+    "next_practice": "Klären Sie das fehlende Formular und geben Sie einen konkreten Bearbeitungs‑ und Rückmeldezeitpunkt an."
+  }
+}

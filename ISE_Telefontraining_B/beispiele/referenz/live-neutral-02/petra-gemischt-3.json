@@ -1,0 +1,94 @@
+{
+  "run": 3,
+  "model": "alias-fast",
+  "errors": [],
+  "id_map": {
+    "m001": "petra-gemischt-m001",
+    "m002": "petra-gemischt-m002",
+    "m003": "petra-gemischt-m003",
+    "m004": "petra-gemischt-m004",
+    "m005": "petra-gemischt-m005"
+  },
+  "critical_match": true,
+  "feedback": {
+    "rubric_version": "auszahlung-0.2",
+    "snapshot_version": 3,
+    "criteria": [
+      {
+        "criterion_id": "empathy",
+        "level": "Teilweise gezeigt",
+        "rationale": "Der Service erkennt den Ärger an, nennt jedoch nicht die konkrete finanzielle Belastung oder die drei‑wöchige Wartezeit.",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Ich verstehe Ihren Ärger. Was stand im letzten Brief?",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "clarification",
+        "level": "Gezeigt",
+        "rationale": "Durch die Frage nach dem Inhalt des letzten Briefs wird fehlende Information eruiert und klar von bekannten Angaben getrennt.",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Ich verstehe Ihren Ärger. Was stand im letzten Brief?",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "next_step",
+        "level": "Teilweise gezeigt",
+        "rationale": "Eine Weiterleitung wird angeboten, jedoch ohne Angabe von Ziel, Zuständigkeit oder Rückmeldezeitpunkt.",
+        "evidence": [
+          {
+            "message_id": "m004",
+            "quote": "Ich leite Sie weiter.",
+            "assisted": false
+          }
+        ]
+      }
+    ],
+    "strengths": [
+      {
+        "criterion_id": "clarification",
+        "text": "Gezielte Nachfrage zum Inhalt des letzten Briefs liefert fehlende Information.",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Ich verstehe Ihren Ärger. Was stand im letzten Brief?",
+            "assisted": false
+          }
+        ]
+      }
+    ],
+    "improvements": [
+      {
+        "criterion_id": "empathy",
+        "text": "Finanzielle Belastung und die dreitägige Wartezeit konkret benennen.",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Ich verstehe Ihren Ärger. Was stand im letzten Brief?",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "next_step",
+        "text": "Weiterleitung präzisieren: Ansprechpartner, Abteilung und geplante Rückmeldezeit nennen.",
+        "evidence": [
+          {
+            "message_id": "m004",
+            "quote": "Ich leite Sie weiter.",
+            "assisted": false
+          }
+        ]
+      }
+    ],
+    "critical_findings": [],
+    "next_practice": "Nennen Sie konkret, an welche Abteilung Sie weiterleiten und geben Sie einen realistischen Zeitpunkt, bis wann der Kunde Rückmeldung erhält."
+  }
+}

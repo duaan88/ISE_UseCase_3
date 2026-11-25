@@ -1,0 +1,95 @@
+{
+  "run": 1,
+  "model": "alias-fast",
+  "errors": [
+    "Beleg verweist nicht auf einen bestätigten Servicebeitrag.",
+    "Beleg verweist nicht auf einen bestätigten Servicebeitrag."
+  ],
+  "id_map": {
+    "m001": "nora-gemischt-m001",
+    "m002": "nora-gemischt-m002",
+    "m003": "nora-gemischt-m003"
+  },
+  "critical_match": true,
+  "feedback": {
+    "rubric_version": "trauerfall-0.2",
+    "snapshot_version": 2,
+    "criteria": [
+      {
+        "criterion_id": "empathy",
+        "level": "Übungsbedarf",
+        "rationale": "Der Verlust wurde nicht anerkannt, es fehlt eine respektvolle Kondolenz.",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Was würde Ihnen jetzt helfen?",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "clarification",
+        "level": "Gezeigt",
+        "rationale": "Es wurde behutsam nach dem aktuellen Wunsch gefragt.",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Was würde Ihnen jetzt helfen?",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "next_step",
+        "level": "Übungsbedarf",
+        "rationale": "Auf den Wunsch nach einer schriftlichen Übersicht wurde kein konkretes Angebot gemacht.",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Was würde Ihnen jetzt helfen?",
+            "assisted": false
+          }
+        ]
+      }
+    ],
+    "strengths": [
+      {
+        "criterion_id": "clarification",
+        "text": "Klärungsfrage nach dem gewünschten Hilfsmittel gestellt.",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Was würde Ihnen jetzt helfen?",
+            "assisted": false
+          }
+        ]
+      }
+    ],
+    "improvements": [
+      {
+        "criterion_id": "empathy",
+        "text": "Verlust des Kunden anerkennen und Anteilnahme ausdrücken.",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Was würde Ihnen jetzt helfen?",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "next_step",
+        "text": "Kurz schriftliche Übersicht anbieten und Zustimmung einholen.",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Was würde Ihnen jetzt helfen?",
+            "assisted": false
+          }
+        ]
+      }
+    ],
+    "critical_findings": [],
+    "next_practice": "Formuliere zuerst eine einfühlsame Kondolenz und biete anschließend sofort die gewünschte schriftliche Übersicht an."
+  }
+}

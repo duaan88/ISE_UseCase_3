@@ -1,0 +1,14 @@
+{
+  "run": 2,
+  "model": "alias-fast",
+  "errors": [
+    "Beleg verweist nicht auf einen bestätigten Servicebeitrag.",
+    "Beleg verweist nicht auf einen bestätigten Servicebeitrag.",
+    "Beleg verweist nicht auf einen bestätigten Servicebeitrag."
+  ],
+  "id_map": {
+    "m001": "nora-gemischt-m001",
+    "m002": "nora-gemischt-m002",
+    "m003": "nora-gemischt-m003"
+  }
+}

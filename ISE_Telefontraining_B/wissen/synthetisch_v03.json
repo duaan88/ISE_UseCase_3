@@ -11,7 +11,12 @@
   },
   "evaluation_profiles": {
     "payout_missing": {
-      "version": "auszahlung-0.1",
+      "version": "auszahlung-0.2",
+      "grenzbeispiele": [
+        "Empathie: Eine pauschale Anerkennung des Ärgers ist Teilweise gezeigt. Die Belastung durch Wartezeit und Rechnung konkret aufzugreifen ist Gezeigt. Ein Vergleich, der den Ärger kleinredet, ist Übungsbedarf.",
+        "Klärung: Eine gezielte Nachfrage, die eine bisher unbekannte relevante Mitteilung erschließt, ist Gezeigt. Ein schroffer Ton betrifft die Empathie. Unterstelle nicht, dass das später bekannt gewordene Detail bereits Gegenstand der Frage war.",
+        "Nächster Schritt: Eine angebotene Weiterleitung ohne Ziel oder Rückmeldezeit ist Teilweise gezeigt. Eine bloße Vertröstung oder unbelegte Zahlungsgarantie ist Übungsbedarf. Eine Annahme oder Ausführung braucht einen eigenen Beleg."
+      ],
       "criteria": {
         "empathy": "Finanzielle Belastung und Wartezeit konkret anerkennen.",
         "clarification": "Nach bisherigen Mitteilungen fragen und offene von bestätigten Informationen trennen.",
@@ -19,7 +24,12 @@
       }
     },
     "bereavement": {
-      "version": "trauerfall-0.1",
+      "version": "trauerfall-0.2",
+      "grenzbeispiele": [
+        "Empathie: Eine behutsame Einladung, den aktuellen Bedarf zu schildern, ist ohne Anerkennung des Verlusts Teilweise gezeigt. Ausdrückliche Anteilnahme mit Raum für eine Antwort ist Gezeigt. Zeitdruck oder Abwertung ist Übungsbedarf.",
+        "Klärung: Eine offene Frage nach gewünschter Unterstützung ist Gezeigt, auch ohne ausdrückliche Kondolenz. Eine sofortige Abfrage von Vertragsdetails ohne Rücksicht auf den geäußerten Bedarf ist Übungsbedarf.",
+        "Nächster Schritt: Nennt die Angehörige ihren Wunsch erst in der letzten Nachricht und folgt kein Servicebeitrag, gilt Keine Gelegenheit. Nenne diese Reihenfolge. Geht die Servicekraft danach über den Wunsch hinweg, gilt Übungsbedarf. Ein passendes Angebot mit Wahlmöglichkeit ist Gezeigt."
+      ],
       "criteria": {
         "empathy": "Den Verlust respektvoll anerkennen und Raum für eine Antwort lassen. Nur beobachtbare Formulierungen bewerten.",
         "clarification": "Behutsam erfragen, welche Unterstützung jetzt gewünscht ist. Druck und unnötige Detailfragen berücksichtigen.",

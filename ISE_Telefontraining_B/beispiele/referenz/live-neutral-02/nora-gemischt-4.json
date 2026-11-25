@@ -1,0 +1,92 @@
+{
+  "run": 4,
+  "model": "alias-fast",
+  "errors": [],
+  "id_map": {
+    "m001": "nora-gemischt-m001",
+    "m002": "nora-gemischt-m002",
+    "m003": "nora-gemischt-m003"
+  },
+  "critical_match": true,
+  "feedback": {
+    "rubric_version": "trauerfall-0.2",
+    "snapshot_version": 2,
+    "criteria": [
+      {
+        "criterion_id": "empathy",
+        "level": "Übungsbedarf",
+        "rationale": "Der Servicekraft fehlt jede Anerkennung des Todesfalls; es wird nur nach einem Hilfewunsch gefragt.",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Was würde Ihnen jetzt helfen?",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "clarification",
+        "level": "Gezeigt",
+        "rationale": "Durch die offene Frage \"Was würde Ihnen jetzt helfen?\" wird behutsam nach dem gewünschten Unterstützungsbedarf gefragt.",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Was würde Ihnen jetzt helfen?",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "next_step",
+        "level": "Übungsbedarf",
+        "rationale": "Nach dem Wunsch des Kunden nach einer schriftlichen Übersicht wird kein konkretes Angebot gemacht oder um Zustimmung gebeten.",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Was würde Ihnen jetzt helfen?",
+            "assisted": false
+          }
+        ]
+      }
+    ],
+    "strengths": [
+      {
+        "criterion_id": "clarification",
+        "text": "Offene Frage nach dem gewünschten Hilfestellungsbedarf gestellt.",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Was würde Ihnen jetzt helfen?",
+            "assisted": false
+          }
+        ]
+      }
+    ],
+    "improvements": [
+      {
+        "criterion_id": "empathy",
+        "text": "Verlust anerkennen und Kondolenz aussprechen.",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Was würde Ihnen jetzt helfen?",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "next_step",
+        "text": "Schriftliche Übersicht anbieten und um Bestätigung bitten.",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Was würde Ihnen jetzt helfen?",
+            "assisted": false
+          }
+        ]
+      }
+    ],
+    "critical_findings": [],
+    "next_practice": "Verlust anerkennen, Kondolenz aussprechen und schriftliche Übersicht anbieten."
+  }
+}

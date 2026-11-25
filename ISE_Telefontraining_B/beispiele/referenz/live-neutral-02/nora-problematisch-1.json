@@ -1,0 +1,113 @@
+{
+  "run": 1,
+  "model": "alias-fast",
+  "errors": [],
+  "id_map": {
+    "m001": "nora-problematisch-m001",
+    "m002": "nora-problematisch-m002",
+    "m003": "nora-problematisch-m003",
+    "m004": "nora-problematisch-m004",
+    "m005": "nora-problematisch-m005"
+  },
+  "critical_match": true,
+  "feedback": {
+    "rubric_version": "trauerfall-0.2",
+    "snapshot_version": 3,
+    "criteria": [
+      {
+        "criterion_id": "empathy",
+        "level": "Übungsbedarf",
+        "rationale": "Keine Anerkennung des Verlusts, unhöflicher Ton und kein Raum für die Kundin, um zu reagieren.",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Machen wir schnell. Welche Verträge hatte Ihr Vater genau?",
+            "assisted": false
+          },
+          {
+            "message_id": "m004",
+            "quote": "Dafür haben wir keine Zeit. Ich leite Sie weiter.",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "clarification",
+        "level": "Übungsbedarf",
+        "rationale": "Direkte Nachfrage nach Vertragsdetails bzw. Ablehnung, ohne behutsam nach dem gewünschten Unterstützungsbedarf zu fragen.",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Machen wir schnell. Welche Verträge hatte Ihr Vater genau?",
+            "assisted": false
+          },
+          {
+            "message_id": "m004",
+            "quote": "Dafür haben wir keine Zeit. Ich leite Sie weiter.",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "next_step",
+        "level": "Übungsbedarf",
+        "rationale": "Kein passender, einvernehmlicher nächster Schritt angeboten; Weiterleitung wird ohne vorherige Zustimmung genannt.",
+        "evidence": [
+          {
+            "message_id": "m004",
+            "quote": "Dafür haben wir keine Zeit. Ich leite Sie weiter.",
+            "assisted": false
+          }
+        ]
+      }
+    ],
+    "strengths": [],
+    "improvements": [
+      {
+        "criterion_id": "empathy",
+        "text": "Verlust anerkennen und Mitgefühl ausdrücken (z. B. 'Mein Beileid'), dann Raum für eine Antwort lassen.",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Machen wir schnell. Welche Verträge hatte Ihr Vater genau?",
+            "assisted": false
+          },
+          {
+            "message_id": "m004",
+            "quote": "Dafür haben wir keine Zeit. Ich leite Sie weiter.",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "clarification",
+        "text": "Behutsam nach der gewünschten Unterstützung fragen, z. B. welche Unterlagen die Kundin benötigt.",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Machen wir schnell. Welche Verträge hatte Ihr Vater genau?",
+            "assisted": false
+          },
+          {
+            "message_id": "m004",
+            "quote": "Dafür haben wir keine Zeit. Ich leite Sie weiter.",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "next_step",
+        "text": "Einen konkreten nächsten Schritt anbieten und ausdrücklich um Zustimmung bitten (z. B. schriftliche Übersicht zusenden oder nach Bestätigung weiterleiten).",
+        "evidence": [
+          {
+            "message_id": "m004",
+            "quote": "Dafür haben wir keine Zeit. Ich leite Sie weiter.",
+            "assisted": false
+          }
+        ]
+      }
+    ],
+    "critical_findings": [],
+    "next_practice": "Ausdruck von Beileid, offene Klärungsfrage stellen und den nächsten Schritt mit Zustimmung der Kundin anbieten."
+  }
+}

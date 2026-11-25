@@ -1,0 +1,118 @@
+{
+  "run": 3,
+  "model": "alias-fast",
+  "errors": [
+    "Beleg verweist nicht auf einen bestätigten Servicebeitrag."
+  ],
+  "id_map": {
+    "m001": "petra-problematisch-m001",
+    "m002": "petra-problematisch-m002",
+    "m003": "petra-problematisch-m003",
+    "m004": "petra-problematisch-m004",
+    "m005": "petra-problematisch-m005"
+  },
+  "critical_match": true,
+  "feedback": {
+    "rubric_version": "auszahlung-0.2",
+    "snapshot_version": 3,
+    "criteria": [
+      {
+        "criterion_id": "empathy",
+        "level": "Übungsbedarf",
+        "rationale": "Der Servicekraft fehlt eine konkrete Anerkennung der finanziellen Belastung und Wartezeit des Kunden; stattdessen wird nur ein allgemeiner Vergleich zu anderen Kunden gemacht.",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Andere warten auch. Was stand im letzten Brief?",
+            "assisted": false
+          },
+          {
+            "message_id": "m004",
+            "quote": "Das Geld ist morgen garantiert da.",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "clarification",
+        "level": "Gezeigt",
+        "rationale": "Durch die Frage nach dem Inhalt des letzten Schreibens wird gezielt nach fehlenden Informationen (Formular zur Bankverbindung) gesucht.",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Andere warten auch. Was stand im letzten Brief?",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "next_step",
+        "level": "Übungsbedarf",
+        "rationale": "Statt einer realistischen Handlung wird eine unbelegte Zahlungsgarantie gegeben, ohne Zuständigkeit, Prüfung oder Rückmeldung zu klären.",
+        "evidence": [
+          {
+            "message_id": "m004",
+            "quote": "Das Geld ist morgen garantiert da.",
+            "assisted": false
+          }
+        ]
+      }
+    ],
+    "strengths": [
+      {
+        "criterion_id": "clarification",
+        "text": "Frage nach dem fehlenden Formular stellt die notwendige Information sicher.",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Andere warten auch. Was stand im letzten Brief?",
+            "assisted": false
+          }
+        ]
+      }
+    ],
+    "improvements": [
+      {
+        "criterion_id": "empathy",
+        "text": "Finanzielle Belastung und lange Wartezeit des Kunden ausdrücklich anerkennen.",
+        "evidence": [
+          {
+            "message_id": "m002",
+            "quote": "Andere warten auch. Was stand im letzten Brief?",
+            "assisted": false
+          },
+          {
+            "message_id": "m004",
+            "quote": "Das Geld ist morgen garantiert da.",
+            "assisted": false
+          }
+        ]
+      },
+      {
+        "criterion_id": "next_step",
+        "text": "Statt unbelegter Zusage konkrete nächste Schritte (z. B. Prüfung, Weiterleitung an zuständige Abteilung) anbieten und Rückmeldefrist nennen.",
+        "evidence": [
+          {
+            "message_id": "m004",
+            "quote": "Das Geld ist morgen garantiert da.",
+            "assisted": false
+          }
+        ]
+      }
+    ],
+    "critical_findings": [
+      {
+        "rule_id": "auszahlung_termin_offen",
+        "reason": "Die Servicekraft sagt eine Zahlung zu einem bestimmten Termin zu. Im Übungsfall ist der Auszahlungstermin offen.",
+        "evidence": [
+          {
+            "message_id": "m004",
+            "quote": "Das Geld ist morgen garantiert da.",
+            "assisted": false
+          }
+        ]
+      }
+    ],
+    "next_practice": "Empathische Bestätigung der Situation geben und einen konkreten, nachprüfbaren nächsten Schritt vorschlagen."
+  }
+}
